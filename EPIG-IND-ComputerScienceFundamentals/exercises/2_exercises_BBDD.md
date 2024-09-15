@@ -2,14 +2,14 @@
 
 Dibujar el modelo entidad-relación de la base de datos ordenadores con las siguientes entidades:
 
-- Ordenadores (PCs): tienen un identificador y un precio
-- Procesador (CPU) tiene un identificador y una descripción.
-- Disco: tiene un ID, una descripción y una capacidad
-- Tarjeta Gráfica: tiene un ID, una capacidad y una descripción
-- Memoria: tiene un ID, una capacidad y una velocidad
-- Fabricante: tiene un ID, una dirección, un teléfono y un CIF
-- Tipo de procesador: tiene un ID, una descripción y un tipo de litografía.
-- Tipo de memoria: tiene un ID y una descripción
+- `Ordenadores (PCs)`: tienen un ID y un precio.
+- `Procesador (CPU)`: tienen un ID y una descripción.
+- `Disco`: tiene un ID, una descripción y una capacidad.
+- `Tarjeta Gráfica`: tiene un ID, una capacidad y una descripción.
+- `Memoria`: tiene un ID, una capacidad y una velocidad.
+- `Fabricante`: tiene un ID, una dirección, un teléfono y un CIF.
+- `Tipo de procesador`: tiene un ID, una descripción y un tipo de litografía.
+- `Tipo de memoria`: tiene un ID y una descripción.
 
 Además sabemos que:
 
@@ -21,7 +21,7 @@ Los procesadores tienen un tipo de procesador asociado, este puede ser compartid
 Tanto tarjetas gráficas como memorias van asociados a un tipo de memoria que puede ser común a todas ellas.
 
 Los ordenadores tienen un componente de cada tipo (procesadores, tarjetas gráficas, memoria y discos), estos componentes
-pueden ser compartidos por todos ellos
+pueden ser compartidos por todos ellos.
 
 <details>
   <summary>SEE SOLUTION</summary>
@@ -29,59 +29,59 @@ pueden ser compartidos por todos ellos
 ```mermaid
 erDiagram
     pcs {
-        VARCHAR(20) pcid
-        VARCHAR(20) cpu
-        VARCHAR(20) disco
-        VARCHAR(20) tgrafica
-        VARCHAR(20) memoria
+        VARCHAR(20) pcid PK
+        VARCHAR(20) id_cpu FK
+        VARCHAR(20) id_disco FK
+        VARCHAR(20) id_tgrafica FK
+        VARCHAR(20) id_memoria FK
         DECIMAL(10) precio
     }
 
     cpu {
-        VARCHAR(20) id_cpu
+        VARCHAR(20) id_cpu PK
         VARCHAR(100) descripcion
-        VARCHAR(20) id_fabricante
-        VARCHAR(20) id_tipo_procesador
+        VARCHAR(20) id_fabricante FK
+        VARCHAR(20) id_tipo_procesador FK
     }
 
     tipo_procesador {
-        VARCHAR(20) id_tipo_procesador
+        VARCHAR(20) id_tipo_procesador PK
         VARCHAR(100) descripcion
         INTEGER t_litografia
     }
 
     disco {
-        VARCHAR(20) id_disco
+        VARCHAR(20) id_disco PK
         VARCHAR(100) descripcion
         INTEGER capacidad
-        VARCHAR(20) id_fabricante
+        VARCHAR(20) id_fabricante FK
     }
 
     memoria {
-        VARCHAR(20) id_memoria
-        VARCHAR(20) id_tipo_memoria
-        VARCHAR(20) id_fabricante
+        VARCHAR(20) id_memoria PK
+        VARCHAR(20) id_tipo_memoria FK
+        VARCHAR(20) id_fabricante FK
         INTEGER capacidad
         INTEGER velocidad
     }
 
     fabricante {
-        VARCHAR(20) id_fabricante
+        VARCHAR(20) id_fabricante PK
         VARCHAR(80) direccion
         VARCHAR(15) telf
         VARCHAR(9) CIF
     }
 
     tgrafica {
-        VARCHAR(20) id_tarjeta_grafica
-        VARCHAR(20) id_tipo_memoria
-        VARCHAR(20) id_fabricante
+        VARCHAR(20) id_tgrafica PK
+        VARCHAR(20) id_tipo_memoria FK
+        VARCHAR(20) id_fabricante FK
         INTEGER capacidad
         VARCHAR(100) descripcion
     }
 
     tipo_memoria {
-        VARCHAR(20) id_tipo_memoria
+        VARCHAR(20) id_tipo_memoria PK
         VARCHAR(100) descripcion
     }
 
@@ -109,14 +109,14 @@ erDiagram
 
 Dibujar el modelo entidad-relación de la base de datos hospitales compuesto de las siguientes entidades:
 
-- Hospital: con un ID, un nombre, dirección y teléfono
-- Sala: con un ID, un nombre, y un número de camas.
-- Estancias: con un ID, una fecha de entrada y salida
-- Doctores: con un ID y un nombre
-- Plantilla: con un ID, un nombre, una función, turno y salario.
-- Especialidades: con su ID y su nombre
-- Enfermedades: con un ID y su nombre
-- Pacientes: con su ID, nombre, dirección, fecha de nacimiento, sexo y número de la seguridad social.
+- `Hospital`: con un ID, un nombre, dirección y teléfono.
+- `Sala`: con un ID, un nombre, y un número de camas.
+- `Estancias`: con un ID, una fecha de entrada y salida.
+- `Doctores`: con un ID y un nombre.
+- `Plantilla`: con un ID, un nombre, una función, turno y salario.
+- `Especialidades`: con su ID y su nombre.
+- `Enfermedades`: con un ID y su nombre.
+- `Pacientes`: con su ID, nombre, dirección, fecha de nacimiento, sexo y número de la seguridad social.
 
 Además sabemos que:
 
@@ -127,7 +127,7 @@ tener varias de estas.
 
 Una sala tiene asociada una plantilla, compuesta por uno o varios empleados.
 
-El hospital tiene uno o varios doctores, pertenecientes a una especialidad
+El hospital tiene uno o varios doctores, pertenecientes a una especialidad.
 
 <details>
   <summary>SEE SOLUTION</summary>
@@ -135,63 +135,63 @@ El hospital tiene uno o varios doctores, pertenecientes a una especialidad
 ```mermaid
 erDiagram
     hospital {
-        VARCHAR(5) IdHos
-        VARCHAR(20) nomhos
-        VARCHAR(30) direc
-        VARCHAR(20) telf
+        VARCHAR(5) Id_Hospital PK
+        VARCHAR(20) nombreHospital
+        VARCHAR(30) direccion
+        VARCHAR(20) telefono
     }
 
     pacientes {
-        VARCHAR(8) IdPac
-        VARCHAR(20) NomPac
-        VARCHAR(20) Direc
-        DATE FechaNac
-        VARCHAR(1) S
+        VARCHAR(8) Id_Paciente PK
+        VARCHAR(20) nombrePaciente
+        VARCHAR(20) direccion
+        DATE fechaNacimiento
+        VARCHAR(1) Sexo
         VARCHAR(12) NSS
     }
 
     enfermedades {
-        VARCHAR(5) IdEnf
-        VARCHAR(20) nomenf
+        VARCHAR(5) Id_Enfermedad PK
+        VARCHAR(20) nombreEnfermedad
     }
 
     estancias {
-        INTEGER IdEstan
-        VARCHAR(8) IdPac
-        DATE fechaent
-        DATE fechasal
-        VARCHAR(5) IdHos
-        INTEGER CodSala
-        VARCHAR(5) IdEnf
+        INTEGER Id_Estancia PK
+        VARCHAR(8) Id_Paciente FK
+        DATE fechaEntrada
+        DATE fechaSalida
+        VARCHAR(5) Id_Hospital FK
+        INTEGER Id_Sala FK
+        VARCHAR(5) Id_Enfermedad FK
     }
 
     sala {
-        VARCHAR(5) IdHos
-        INTEGER CodSala
-        VARCHAR(25) nomsala
-        INTEGER numcamas
+        INTEGER Id_Sala PK
+        VARCHAR(5) Id_Hospital FK
+        VARCHAR(25) nombreSala
+        INTEGER numCamas
     }
 
     doctor {
-        VARCHAR(8) IdDoc
-        VARCHAR(5) IdHos
-        VARCHAR(25) nomdoc
-        VARCHAR(5) IdEsp
+        VARCHAR(8) Id_Doctor PK
+        VARCHAR(5) Id_Hospital FK
+        VARCHAR(25) nombreDoctor
+        VARCHAR(5) Id_Especialidad FK
     }
 
     plantilla {
-        VARCHAR(8) IdEmp
-        VARCHAR(5) IdHos
-        INTEGER CodSala
-        VARCHAR(25) nomemp
+        VARCHAR(8) Id_Empleado PK
+        VARCHAR(5) Id_Hospital FK
+        INTEGER Id_Sala FK
+        VARCHAR(25) nombreEmpleado
         VARCHAR(25) funcion
         VARCHAR(1) turno
         FLOAT salarioanual
     }
 
     especialidades {
-        DomNumPositivo IdEsp
-        VARCHAR(15) nomespecialidad
+        VARCHAR(5) Id_Especialidad PK
+        VARCHAR(15) nombreEspecialidad
     }
 
 %% Relaciones
@@ -207,17 +207,17 @@ erDiagram
 
 </details>
 
-# DDBB Pedidos (DRAFT)
+# DDBB Pedidos
 
 Dibujar el modelo entidad relación de la base de datos pedidos online con las siguientes entidades:
 
-- Productos: con su id, nombre, precio, estado y fecha de creación.
-- Etiquetas de producto: Con su id y nombre.
-- Pedidos: con su id, estado y fecha de creación.
-- País: con su id (código), nombre y nombre del continente al que pertenece.
-- Tienda: con su id, nombre, fecha de creación y su administrador.
-- Usuarios: con su id, nombre completo y fecha de registro.
-- Temporada: con su id, fecha de inicio y fecha de fin.
+- `Productos`: con su ID, nombre, precio, estado y fecha de creación.
+- `Etiquetas de producto`: Con su ID y nombre.
+- `Pedidos`: con su ID, estado y fecha de creación.
+- `País`: con su ID (código), nombre y nombre del continente al que pertenece.
+- `Tienda`: con su ID, nombre, fecha de creación y su administrador.
+- `Usuarios`: con su ID, nombre completo y fecha de registro.
+- `Temporada`: con su ID, fecha de inicio y fecha de fin.
 
 Además sabemos que:
 
@@ -239,64 +239,64 @@ Existe un usuario único que es el administrador de la tienda, este a su vez pue
 ```mermaid
 erDiagram
     productos {
-        INTEGER id_producto
+        INTEGER Id_Producto PK
+        INTEGER Id_Vendedor FK
         VARCHAR(25) nombre
-        INTEGER IDVendedor
         INTEGER precio
         VARCHAR(1) estado
-        DATE fechacreacion
+        DATE fechaCreacion
     }
 
     etiquetas_producto {
-        INTEGER id_producto
-        VARCHAR(5) id_etiqueta
+        INTEGER Id_Producto FK
+        VARCHAR(5) Id_Etiqueta FK
     }
 
     etiquetas {
-        VARCHAR(5) id_etiqueta
+        VARCHAR(5) Id_Etiqueta PK
         VARCHAR(25) nombre
     }
 
     items_pedido {
-        INTEGER IDPedido
-        INTEGER IDProducto
+        INTEGER ID_Pedido FK
+        INTEGER ID_Producto FK
         INTEGER cantidad
     }
 
     pedidos {
-        INTEGER id
-        INTEGER IDUsuario
+        INTEGER Id_Pedido PK
+        INTEGER ID_Usuario FK
         VARCHAR(1) estado
-        DATE fechacreacion
+        DATE fechaCreacion
     }
 
     pais {
-        VARCHAR(4) codigo
+        VARCHAR(4) Id_Pais PK
         VARCHAR(25) nombre
         VARCHAR(25) nombreContinente
     }
 
     tienda {
-        INTEGER id
-        VARCHAR(4) codigo_pais
+        INTEGER Id_Pais PK
+        VARCHAR(4) Id_Pais FK
         VARCHAR(25) nombre
-        DATE fechacreacion
-        INTEGER Id_Admin
+        DATE fechaCreacion
+        INTEGER Id_Admin FK
     }
 
     Usuarios {
-        INTEGER id
-        VARCHAR(25) nombrecompleto
-        DATE fechacreacion
-        VARCHAR(4) codigo_pais
+        INTEGER Id_Usuario PK
+        VARCHAR(25) nombreCompleto
+        DATE fechaCreacion
+        VARCHAR(4) Id_Pais FK
     }
 
     Temporada {
-        INTEGER id
-        INTEGER IDVendedor
-        VARCHAR(4) codigo_pais
-        DATE fechainicio
-        DATE fechafin
+        INTEGER Id_Temporada PK
+        INTEGER Id_Vendedor FK
+        VARCHAR(4) Id_Pais FK
+        DATE fechaInicio
+        DATE fechaFin
     }
 
 %% Relaciones
@@ -304,27 +304,28 @@ erDiagram
     etiquetas ||--o{ etiquetas_producto: ""
     pedidos ||--o{ items_pedido: ""
     productos ||--o{ items_pedido: ""
-    pedidos ||--o{ Usuarios: ""
-    tienda ||--o{ pais: ""
-    Usuarios ||--o{ pais: ""
+    Usuarios ||--o{ pedidos : ""
+    pais ||--o{ tienda: ""
+    pais ||--o{ Usuarios: ""
     tienda ||--o{ Temporada: ""
-    Temporada ||--o{ productos: ""
+    tienda ||--o{ productos: ""
+
 
 ```
 
 </details>
 
-# DDBB MarketPlace (DRAFT)
+# DDBB MarketPlace
 
 Dibujar el modelo entidad-relación de la base de datos:
 
-- Autores: tiene un identificador, nombre, país y URL
-- Libro: tiene un identificador (ISBN), un año de publicación, un título y un precio
-- Editorial: tiene un identificador, un nombre, dirección, teléfono y URL
-- Vendedor online: tiene un identificador, un email y una URL
-- Cesta de la compra: tiene un identificador y un número de referencia
-- Comprador: tiene un identificador, un nombre, dirección, email y número de tarjeta de crédito
-- Un pedido: tiene un identificador, fecha y dirección
+- `Autores`: tiene un ID, nombre, país y URL
+- `Libro`: tiene un ID o ISBN, un año de publicación, un título y un precio
+- `Editorial`: tiene un ID, un nombre, dirección, teléfono y URL
+- `Vendedor online`: tiene un ID, un email y una URL
+- `Cesta de la compra`: tiene un ID y un número de referencia
+- `Comprador`: tiene un ID, un nombre, dirección, email y número de tarjeta de crédito
+- `Pedido`: tiene un ID, fecha y dirección
 
 Además sabemos que:
 
@@ -345,27 +346,27 @@ los cuales pueden estar en varios pedidos en una serie de unidades.
 erDiagram
 %% Entidades
     Autor {
-        INTEGER id_autor
+        INTEGER Id_Autor
         VARCHAR(25) nombre
         VARCHAR(25) pais
         VARCHAR(35) URL
     }
 
     Autoria {
-        INTEGER id_autoria
-        INTEGER ISBN
-        INTEGER id_autor
+        INTEGER Id_Autoria PK
+        INTEGER ISBN FK
+        INTEGER Id_Autor FK
     }
 
     Libro {
-        INTEGER ISBN
-        INTEGER anio_publicacion
+        INTEGER ISBN PK
+        INTEGER anioPublicacion
         VARCHAR(25) titulo
         FLOAT precio
     }
 
     Editorial {
-        INTEGER id_editorial
+        INTEGER Id_Editorial PK
         VARCHAR(25) nombre
         VARCHAR(35) direccion
         VARCHAR(9) telefono
@@ -373,30 +374,35 @@ erDiagram
     }
 
     VendedorOnline {
-        INTEGER id_vendedor
+        INTEGER Id_Vendedor PK
         VARCHAR(25) email
         VARCHAR(35) URL
     }
 
     CestaCompra {
-        INTEGER id_cesta
-        INTEGER ISBN
-        INTEGER id_comprador
+        INTEGER Id_Cesta PK
+        INTEGER Id_Comprador FK
         INTEGER cantidad
     }
 
     Comprador {
-        INTEGER id_comprador
+        INTEGER Id_Comprador PK
         VARCHAR(25) nombre
         VARCHAR(35) direccion
         VARCHAR(25) email
-        VARCHAR(25) num_tarjeta_credito
+        VARCHAR(25) numTarjeta
     }
 
     Pedido {
-        INTEGER id_pedido
+        INTEGER Id_Pedido
         DATE fecha
-        VARCHAR(35) direccion_envio
+        VARCHAR(35) direccionEnvio
+    }
+    ItemsCesta{
+        INTEGER Id_ItemsCesta PK
+        INTEGER Id_Cesta FK
+        INTEGER ISBN FK
+        INTEGER cantidad
     }
 
 %% Relaciones
@@ -404,10 +410,11 @@ erDiagram
     Libro ||--o{ Autoria: ""
     Libro }o--|| Editorial: ""
     VendedorOnline ||--o{ Libro: ""
-    CestaCompra ||--o{ Libro: ""
-    Comprador ||--o{ CestaCompra: ""
+    Comprador ||-- ||CestaCompra: ""
     Comprador ||--o{ Pedido: ""
 %% Relaciones N:M
+    CestaCompra ||--o{ ItemsCesta: ""
+    Libro ||--o{ ItemsCesta: ""
     VendedorOnline ||--o{ Libro: ""
     Libro ||--o{ Pedido: ""
 

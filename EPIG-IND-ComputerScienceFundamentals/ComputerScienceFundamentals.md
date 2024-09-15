@@ -39,7 +39,8 @@ Explore past exam papers to prepare for upcoming assessments or to deepen your k
 ### 💻 Laboratory Exams
 
 #### Course 2022-2023:
-
+- **[January Excel Exam](exams/laboratory/22-23-EPIG-FCS-Lab-Excel.md)**
+- **[January Python For](exams/laboratory/22-23-EPIG-FCS-Lab-Python1.md)**
 - **[January Python All Exam](exams/laboratory/22-23-EPIG-FCS-Lab-Python2.md)**
 
 ### 💻 Exercises

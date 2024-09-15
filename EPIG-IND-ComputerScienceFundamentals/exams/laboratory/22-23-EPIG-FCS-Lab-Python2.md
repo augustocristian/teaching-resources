@@ -1,4 +1,4 @@
-# Laboratory Exam Computer Science Fundamentals 15th December 2022
+# Laboratory Exam Python (All) Computer Science Fundamentals 15th December 2022
 
 1. Se nos ha encargado crear un programa que calcule la calificación de la
    asignatura de Fundamentos de Informática y genere en ficheros separados cada grupo.
