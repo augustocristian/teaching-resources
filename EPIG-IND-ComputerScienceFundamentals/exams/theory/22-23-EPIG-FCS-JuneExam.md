@@ -51,7 +51,7 @@
    ```
 
    |       | inicio | it1 | it2 | it3 | it4 | it5 |
-   |-------|--------|-----|-----|-----|-----|-----|
+      |-------|--------|-----|-----|-----|-----|-----|
    | **s** |        |     |     |     |     |     |
    | **p** |        |     |     |     |     |     |
    | **i** |        |     |     |     |     |     |
@@ -61,14 +61,14 @@
    variables asignadas indica si se produce algún un error (sintáctico, en tiempo de
    ejecución, etc.). Si no se produce error alguno indica el resultado y su tipo y si se
    produce un error indica brevemente por qué:
-    
-    | Expresión        | ¿Correcta? | Tipo y resultado / Modificación / Causa del error | 
-    |------------------|------------|---------------------------------------------------|
-    | `c/(c-(a+b))`    |            |                                                   |
-    | `e[a]*'d'+'z'*a` |            |                                                   |
-    | `b*b**-a`        |            |                                                   |
-    | `len(e)/b*'z'`   |            |                                                   |
-    | `e[d-b**b]`      |            |                                                   |
+
+   | Expresión        | ¿Correcta? | Tipo y resultado / Modificación / Causa del error | 
+       |------------------|------------|---------------------------------------------------|
+   | `c/(c-(a+b))`    |            |                                                   |
+   | `e[a]*'d'+'z'*a` |            |                                                   |
+   | `b*b**-a`        |            |                                                   |
+   | `len(e)/b*'z'`   |            |                                                   |
+   | `e[d-b**b]`      |            |                                                   |
 
 5. El Ayuntamiento de Madrid ha implementado restricciones a la
    movilidad de los vehículos en función de sus matrículas. Las matrículas constan
@@ -239,11 +239,11 @@ NOTA previa: en las preguntas siguientes, tipo V/F, dos errores invalidan un aci
    base de datos el autor o autores y el álbum (disco) o álbumes de los que forma
    parte cada canción, en resumen:
 
-   - Autores: nombre
-   - Canciones: título y duración
-   - Formatos: tipo y bitrate
-   - Álbumes: título
-   
+    - Autores: nombre
+    - Canciones: título y duración
+    - Formatos: tipo y bitrate
+    - Álbumes: título
+
    Además, sabemos que:
 
    Un autor puede escribir varias canciones y una canción estar escrita por varios

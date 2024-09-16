@@ -48,11 +48,11 @@
    5 
    2 
    ```
-   
+
    Indica el resultado de las siguientes llamadas:
-   
+
    | Expresión    | Resultado |
-   |--------------|-----------|
+      |--------------|-----------|
    | contar(1,5)  |           |  
    | contar(4,3)  |           | 
    | contar(7,10) |           |
@@ -62,7 +62,7 @@
    brevemente por qué. :
 
    | Expresión      | ¿Correcta? | Tipo y resultado / Causa del error |
-   |----------------|------------|------------------------------------|
+      |----------------|------------|------------------------------------|
    | `b/a`          |            |                                    |
    | `d*b/a`        |            |                                    |
    | `c**a+1`       |            |                                    |
@@ -124,6 +124,6 @@
 
    Es posible que en alguna tabla haya que añadir campos para relacionarlas. Es posible que haya que añadir alguna tabla
    para implementar alguna relación N:M.
-   
+
    **Se pide: Diseñar la base de datos que permita almacenar y gestionar estos datos y dibujar los correspondientes
    diagramas Entidad-Relación.**

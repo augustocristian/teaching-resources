@@ -43,7 +43,7 @@
    ```
 
    |       | inicio | it1 | it2 | it3 | it4 | it5 |
-                              |-------|--------|-----|-----|-----|-----|-----|
+                                 |-------|--------|-----|-----|-----|-----|-----|
    | **a** |        |     |     |     |     |     |
    | **b** |        |     |     |     |     |     |
    | **f** |        |     |     |     |     |     |
@@ -53,7 +53,7 @@
    modificación de la lista o en caso de error la causa de este:
 
    | Expresión          | ¿Correcta? | Tipo y resultado / Modificación / Causa del error |
-                            |--------------------|------------|---------------------------------------------------|
+                               |--------------------|------------|---------------------------------------------------|
    | `a[::-1]`          |            |                                                   |
    | `a.append(str(b))` |            |                                                   |
    | `a * b[2]`         |            |                                                   |
@@ -245,22 +245,25 @@ NOTA previa: en las preguntas siguientes, tipo V/F, dos errores invalidan un aci
 9. La Universidad quiere crear una base de datos para almacenar la información referente de sus auditorías energéticas.
    En la base de datos se almacenará la información de los espacios, edificios, lecturas de los contadores, profesores y
    PAS (personal de administración y servicios) del campus. De estas entidades se va a almacenar
-   - Espacio: número inventario y tamaño.
-   - Edificio: dirección, año de construcción, tamaño, número de suministro, potencia contratada.
-   - Lectura de contador:  fecha, hora y potencia suministrada
-   - Profesor: nombre, apellidos, correo y departamento.
-   - Miembro del PAS: nombre, apellidos, puesto y correo
-   
-   Además, sabemos que:
-   
-   Un edificio puede tener varios espacios, los espacios pertenecen a un único edificio.
-  
-   Un espacio puede tener varias lecturas de contador, cada lectura corresponde a un único momento (fecha y hora) y espacio.
+    - Espacio: número inventario y tamaño.
+    - Edificio: dirección, año de construcción, tamaño, número de suministro, potencia contratada.
+    - Lectura de contador:  fecha, hora y potencia suministrada
+    - Profesor: nombre, apellidos, correo y departamento.
+    - Miembro del PAS: nombre, apellidos, puesto y correo
 
-   Un profesor puede tener asignados varios espacios, a la misma vez un espacio puede ser compartido por varios profesores.
-   
+   Además, sabemos que:
+
+   Un edificio puede tener varios espacios, los espacios pertenecen a un único edificio.
+
+   Un espacio puede tener varias lecturas de contador, cada lectura corresponde a un único momento (fecha y hora) y
+   espacio.
+
+   Un profesor puede tener asignados varios espacios, a la misma vez un espacio puede ser compartido por varios
+   profesores.
+
    El PAS rota entre diferentes espacios de la Universidad, un espacio puede ser usado por varios miembros del PAS.
 
-   Se pide el diseño de la base de datos de acuerdo con los contenidos teóricos impartidos, incluyendo el tipo de cada relación (1:n, n:n) y clave (PK/FK).
+   Se pide el diseño de la base de datos de acuerdo con los contenidos teóricos impartidos, incluyendo el tipo de cada
+   relación (1:n, n:n) y clave (PK/FK).
 
    **NOTA: Es posible que sean necesarias tablas adicionales o añadir campos a las tablas para relacionarlas.**

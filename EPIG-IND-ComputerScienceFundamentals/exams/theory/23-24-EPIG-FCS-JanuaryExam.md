@@ -40,9 +40,9 @@
      a = int(str(b) + '0')
      d = len(c)
    ```
-   
+
    |       | inicio | it1 | it2 | it3 | it4 | it5 |
-   |-------|--------|-----|-----|-----|-----|-----|
+      |-------|--------|-----|-----|-----|-----|-----|
    | **a** | 10     |     |     |     |     |     |
    | **b** | 0      |     |     |     |     |     |
    | **c** | "3."   |     |     |     |     |     |
@@ -51,9 +51,9 @@
 4. Se tienen las siguientes variables: a=4, b= '3', c= [‘A’,3,2.5, a], d= 3.0. Para cada expresión de la tabla
    siguiente, indica si es correcta o por si el contrario, daría un error en su ejecución. Indique en caso de error la
    causa de este:
-   
+
    | Expresión    | ¿Correcta? | Tipo y resultado / Causa del error |
-   |--------------|------------|------------------------------------|
+      |--------------|------------|------------------------------------|
    | `c[-2:]`     |            |                                    |
    | `d/b`        |            |                                    |
    | `d>=len(c)`  |            |                                    |
@@ -137,7 +137,7 @@
    ```
 
    salida.txt:
-   
+
    ```txt
    12.0ºC
    13.5ºC
@@ -199,48 +199,50 @@ NOTA previa: en las preguntas siguientes, tipo V/F, dos errores invalidan un aci
 
 7. Conteste V o F según corresponda:
 
-   - [ ] Los HDDs tienen partes mecánicas en movimiento y presentan unas velocidades de lectura-escritura mucho menores que
-     los SSDs.
-   - [ ] La CPU se comunica con los diferentes periféricos/memoria a través de ondas electromagnéticas (Wi-Fi).
+    - [ ] Los HDDs tienen partes mecánicas en movimiento y presentan unas velocidades de lectura-escritura mucho menores
+      que
+      los SSDs.
+    - [ ] La CPU se comunica con los diferentes periféricos/memoria a través de ondas electromagnéticas (Wi-Fi).
 
-   - [ ] La evolución de los dispositivos de almacenamiento externo, CD, DVD y Blue-ray fue debida a la introducción
-     sucesiva en la grabación de láseres con rayo cada vez más fino, para el primero rojo y para el último azul
+    - [ ] La evolución de los dispositivos de almacenamiento externo, CD, DVD y Blue-ray fue debida a la introducción
+      sucesiva en la grabación de láseres con rayo cada vez más fino, para el primero rojo y para el último azul
 
-   - [ ] El software de aplicación es el que utilizan los operadores para controlar un proceso industrial específico,
-     basándose en mediciones de diferentes variables de proceso.
+    - [ ] El software de aplicación es el que utilizan los operadores para controlar un proceso industrial específico,
+      basándose en mediciones de diferentes variables de proceso.
 
 8. Conteste V o F según corresponda:
 
-   - [ ] Los sistemas operativos en tiempo real se utilizan principalmente en aplicaciones donde la interacción con el
-     usuario es más crítica que el procesamiento de datos.
-   - [ ] La gestión de memoria en los sistemas operativos modernos permite que varios programas se ejecuten
-     simultáneamente, aunque la memoria física sea menor que la requerida para todos los programas.
-   - [ ] Los sistemas operativos modernos no requieren controladores de dispositivos específicos para interactuar con el
-     hardware
-   - [ ] La seguridad de los sistemas operativos depende exclusivamente de software de terceros, como antivirus y
-     cortafuegos
+    - [ ] Los sistemas operativos en tiempo real se utilizan principalmente en aplicaciones donde la interacción con el
+      usuario es más crítica que el procesamiento de datos.
+    - [ ] La gestión de memoria en los sistemas operativos modernos permite que varios programas se ejecuten
+      simultáneamente, aunque la memoria física sea menor que la requerida para todos los programas.
+    - [ ] Los sistemas operativos modernos no requieren controladores de dispositivos específicos para interactuar con
+      el
+      hardware
+    - [ ] La seguridad de los sistemas operativos depende exclusivamente de software de terceros, como antivirus y
+      cortafuegos
 
 9. Una empresa dedicada a la gestión de tráfico ferroviario requiere una base de datos con los diferentes trayectos que
    realizan los trenes, qué maquinistas los realizan y qué pasajeros viajan en esos trayectos. La información que se
    almacena en la base de datos es la siguiente:
 
-   - Trenes: modelo, año de fabricación y ancho
-   - Trayectos: hora de salida, hora d llegada, estación de origen y estación de destino.
-   - Maquinistas: nombre, apellidos, licencia y DNI
-   - Pasajeros: nombre, apellidos y DNI
-   - Billetes: precio y clase
+    - Trenes: modelo, año de fabricación y ancho
+    - Trayectos: hora de salida, hora d llegada, estación de origen y estación de destino.
+    - Maquinistas: nombre, apellidos, licencia y DNI
+    - Pasajeros: nombre, apellidos y DNI
+    - Billetes: precio y clase
 
    Un pasajero puede tener varios billetes, cada billete pertenece a un único pasajero.
-   
+
    Un tren realiza múltiples trayectos, que a su vez son realizados por un único tren.
-   
+
    Un billete puede incluir varios trayectos, a su vez los trayectos pueden realizarse con varios billetes.
 
    Un maquinista puede realizar varios trayectos, a su vez los trayectos pueden ser realizados por varios maquinistas.
- 
+
    **Se pide el diseño de la base de datos de acuerdo con los contenidos teóricos impartidos, incluyendo el tipo de cada
    relación (1:n, n:n) y clave (PK/FK).**
-   
+
    **NOTA: Es posible que sean necesarias tablas adicionales o añadir campos a las tablas para relacionarlas**
 
 
