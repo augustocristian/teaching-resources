@@ -18,12 +18,6 @@ Explore past exam papers to prepare for upcoming assessments or to deepen your k
 
 - **[May Exam](exams/theory/13-14-EPIG-FCS-MayExam.md)**
 
-#### Course 2021-2022:
-
-- **January Exam** *(coming soon)*
-- **May Exam** *(coming soon)*
-- **June Exam** *(coming soon)*
-
 #### Course 2022-2023:
 
 - **[January Exam](exams/theory/22-23-EPIG-FCS-JanuaryExam.md)**
@@ -40,6 +34,7 @@ Explore past exam papers to prepare for upcoming assessments or to deepen your k
 
 #### Course 2022-2023:
 - **[January Excel Exam](exams/laboratory/22-23-EPIG-FCS-Lab-Excel.md)**
+- **[January Access Exam](exams/laboratory/22-23-EPIG-FCS-Lab-Access.md)**
 - **[January Python For](exams/laboratory/22-23-EPIG-FCS-Lab-Python1.md)**
 - **[January Python All Exam](exams/laboratory/22-23-EPIG-FCS-Lab-Python2.md)**
 
