@@ -44,7 +44,7 @@
     ```
 
    |          | inicio | it1 | it2 | it3 | it4 | it5 |
-          |:--------:|:------:|:---:|:---:|:---:|:---:|:---:|
+   |:--------:|:------:|:---:|:---:|:---:|:---:|:---:|
    |  **a**   |   7    |     |     |     |     |     |
    |  **b**   |   7    |     |     |     |     |     |
    |  **c**   |   4    |     |     |     |     |     |
@@ -55,13 +55,13 @@
    correcta o no. Si lo fuera indica el resultado y su tipo, y si es incorrecta indica
    brevemente por qué:
 
-   | Expresión      | ¿Correcta? | Tipo y resultado / Modificación / Causa del error | 
-                |----------------|------------|---------------------------------------------------|
-   | `a[::-1]`      |            |                                                   |
-   | `a*b`          |            |                                                   |
-   | `a[0][c]`      |            |                                                   |
-   | `b**c` |            |                                                   |
-   | `int(b)*len(d[1])`    |            |                                                   |
+   | Expresión          | ¿Correcta? | Tipo y resultado / Modificación / Causa del error | 
+   |--------------------|------------|---------------------------------------------------|
+   | `a[::-1]`          |            |                                                   |
+   | `a*b`              |            |                                                   |
+   | `a[0][c]`          |            |                                                   |
+   | `b**c`             |            |                                                   |
+   | `int(b)*len(d[1])` |            |                                                   |
 
 5. Defínanse las siguientes funciones:
     1. `media_aritmetica()`: calcula la media aritmética de los números que

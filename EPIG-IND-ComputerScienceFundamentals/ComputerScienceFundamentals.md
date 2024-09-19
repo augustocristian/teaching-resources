@@ -41,6 +41,7 @@ Explore past exam papers to prepare for upcoming assessments or to deepen your k
 ### 💻 Exercises
 
 - **[DDBBs Entity-relationship](exercises/2_exercises_BBDD.md)**
+- **[Exercises Python VOL I](exercises/31_exercises_Python.md)**
 
 ---
 

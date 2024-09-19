@@ -41,17 +41,17 @@
     p = lista[0]
     s = ' '
     while i<len(lista):
-    if i % 2 == 0:
-    p = chr(ord(lista[i])+2)
-    s = chr(ord(lista[i])+1)
-    else:
-    p = chr(ord(lista[i])+1)
-    s = chr(ord(lista[i])+2)
-    i+=1
+      if i % 2 == 0:
+        p = chr(ord(lista[i])+2)
+        s = chr(ord(lista[i])+1)
+      else:
+        p = chr(ord(lista[i])+1)
+        s = chr(ord(lista[i])+2)
+      i+=1
    ```
 
    |       | inicio | it1 | it2 | it3 | it4 | it5 |
-      |-------|--------|-----|-----|-----|-----|-----|
+   |-------|--------|-----|-----|-----|-----|-----|
    | **s** |        |     |     |     |     |     |
    | **p** |        |     |     |     |     |     |
    | **i** |        |     |     |     |     |     |
@@ -63,7 +63,7 @@
    produce un error indica brevemente por qué:
 
    | Expresión        | ¿Correcta? | Tipo y resultado / Modificación / Causa del error | 
-       |------------------|------------|---------------------------------------------------|
+   |------------------|------------|---------------------------------------------------|
    | `c/(c-(a+b))`    |            |                                                   |
    | `e[a]*'d'+'z'*a` |            |                                                   |
    | `b*b**-a`        |            |                                                   |

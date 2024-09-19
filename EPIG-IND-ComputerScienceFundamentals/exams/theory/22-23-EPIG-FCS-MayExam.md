@@ -50,7 +50,7 @@
    ```
 
    |       | inicio | it1 | it2 | it3 | it4 | it5 |
-      |-------|--------|-----|-----|-----|-----|-----|
+   |-------|--------|-----|-----|-----|-----|-----|
    | **s** | 0      |     |     |     |     |     |
    | **p** | 1      |     |     |     |     |     |
    | **i** | 0      |     |     |     |     |     |
@@ -62,7 +62,7 @@
    brevemente por qué:
 
    | Expresión          | ¿Correcta? | Tipo y resultado / Modificación / Causa del error |
-      |--------------------|------------|---------------------------------------------------|
+   |--------------------|------------|---------------------------------------------------|
    | `-a**b+c*d`        |            |                                                   |
    | `c*'d'+b*'a'`      |            |                                                   |
    | `(a//b)**-c+d`     |            |                                                   |
@@ -75,17 +75,17 @@
       devolverá 1 y si no devolverá el resultado de: 1 ⋅ 2 ⋅ 3 ⋅ 4 ⋅...⋅n
     - `combinatorio(n,m)`: los argumentos son dos enteros, cero o
       positivos, tales que n>=m. Devolverá el valor de la expresión
-      $$
-      \frac{n!}{(n-m)!*m!}
-      $$
+      ```math 
+        \frac{n!}{(n-m)!*m!}
+      ```
 
       Utilizando las funciones anteriores, constrúyase un programa que reciba
       como entrada desde el teclado un entero positivo o cero, deberá de comprobar
       que es así y si es necesario repetir la petición del valor, y calcule e imprima el
       valor de la siguiente expresión para el valor n introducido:
-      $$
-      \sum_{k=0}^{n} (-1)^k \binom{n}{k}
-      $$
+      ```math 
+        \sum_{k=0}^{n} (-1)^k \binom{n}{k}
+      ```
 
    ```python
    #Solve the exercise here
