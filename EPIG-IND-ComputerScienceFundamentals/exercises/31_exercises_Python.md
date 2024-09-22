@@ -7,9 +7,71 @@
 - [Ejercicios con funciones](#ejercicios-con-funciones)
 - [Ejercicios con ficheros](#ejercicios-con-ficheros)
 
+## Ejercicios de variables
+
+1. Dadas las variables a= 3 b = “pepe” c=1 d= 2 para cada expresión de la tabla siguiente, indicar si la expresión es
+   correcta o no. Si lo fuera, indicar el resultado y su tipo. Si es incorrecta indicar brevemente por qué
+
+   | Expresión  | ¿Es correcta? | Tipo y resultado | 
+   |------------|---------------|------------------|
+   | `a/d`      |               |                  |
+   | `a*b/d`    |               |                  |
+   | `a**(c/2)` |               |                  |
+   | `c%d==c`   |               |                  |
+   | `b*a**d`   |               |                  |
+
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   | Expresión  | ¿Es correcta? | Tipo y resultado                                           |
+   |------------|---------------|------------------------------------------------------------|
+   | `a/d`      | Sí            | 1.5 `float`                                                |
+   | `a*b/d`    | No            | Incorrecta, b es una cadena la cual no soporta la división |
+   | `a**(c/2)` | Sí            | 3^(√2)   `float`                                           |
+   | `c%d==c`   | Sí            | True  `bool`                                               |
+   | `b*a**d`   | Sí            | 'pepepepepepepepepepepepepepepepepepe' `str`               |
+
+   </details>
+2. ¿Qué saldrá por pantalla al ejecutar el siguiente código?
+
+   ```python 
+   j = 0
+   h = 5
+   resultado = h**j
+   j = j + 1
+   resultado = resultado + h**j
+   j = j + 1
+   resultado = resultado + h**j
+   print(resultado)
+    ```
+   Salida: `El resultado es : _ _`
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ` El resultado es 31 (1+5+25)`
+   </details>
+
 ## Ejercicios de condicionales
 
-Proximamente...
+1. Escribir las siguientes condiciones empleando la sintaxis de Python:
+    1. El resto de dividir `X` entre `Y` es mayor que `Y` elevado al cuadrado.  `Y` se encuentra en el intervalo [1,4)
+    2. Y más 5 es distinto de `Z` así como `Z` más 4 es menor que `Y`. `X` e `Y` se encuentran en el intervalo (2,5)
+       ```python 
+       Escribe la solución aquí:
+    
+    
+    
+    
+         ```
+   <details>
+      <summary>SEE SOLUTION</summary>
+
+      ```python 
+               i) ((X%Y)>(Y**2) ) &((Y>=1)&(Y<4))
+               ii) ((Y+5)!=Z) & (Z+4<Y) & (Z>2)&(Z<5) & (Y>2)&(Y<5)
+      ```
+
+ </details>
 
 ## Ejercicios de bucles
 
@@ -302,7 +364,60 @@ Proximamente...
 
 ## Ejercicios con funciones
 
-1. Definir una función DNIValido que, dado un número de DNI, retorne True si es válido y False si no lo es. Para que un
+1. Definir una función que dados dos números (el primero menor que el segundo) muestre por pantalla todos los números
+   pares que hay en dicho intervalo
+
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def paresintervalo(n,m):
+      for i in range (n,m,1)
+         if(i%2==0):
+            print (i)
+   ```
+
+</details>
+
+2. Definir una función que dados dos números (el primero menor que el segundo) RETORNE una cadena con todos los impares
+   del intervalo
+
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def imparesintervalo(n,m):
+      salida=“”
+      for i in range (n,m,1)
+         if(i%2!=0):
+      return salida
+   ```
+
+</details>
+
+3. Definir una función que dada una nota (numérica) devuelva si es un “SUSPENSO”, “APROBADO”, “NOTABLE” o
+   “SOBRESALIENTE””
+
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def notastring(nota):
+      salida=“”
+      If (nota<5):
+         salida=“SUSPENSO”
+      elif (nota>=5)&(nota<7):
+         salida =“APROBADO”
+      elif (nota>=7)&(nota<9):
+         salida =“NOTABLE”
+      else:
+         salida= “SOBRESALIENTE”
+   return salida
+   ```
+
+</details>
+
+4. Definir una función DNIValido que, dado un número de DNI, retorne True si es válido y False si no lo es. Para que un
    número de DNI sea válido debe de tener 9 dígitos y una letra mayúscula
 
     <details>
@@ -326,12 +441,124 @@ Proximamente...
 
 </details>
 
+5. Definir una función que dada una cantidad de grados celsius, retorne el equivalente en escala Kelvin y Farenheit. (
+   0ºC= 273 ºK, ºF= ℃ * 1.8000+32.00
+
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def dameGrados(centigrados):
+      gradosKelvin=centigrados+273
+      gradosFarenheit=centigrados* 1.8000+ 32.00
+      return gradosKelvin,gradosFarenheit
+   kelvin,farenheit = dameGrados(30)
+   ```
+   </details>
+
+6. Definir una función que dado el peso y altura de un paciente muestre por pantalla (1) su IMC y (2) su estado
+   siendo este:
+   ```math
+   IMC = \frac{Peso}{Altura^2}
+   ```
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def dameimc(peso, altura):
+     imc = peso / (altura ** 2)
+     if (imc < 18.5):
+       print("El IMC es de", imc, "tienes un peso bajo")
+     elif ((imc >= 18.5) & (imc <= 24.9)):
+       print("El IMC es de", imc, "tienes un peso Normal")
+     elif ((imc >= 25) & (imc <= 29.9)):
+       print("El IMC es de", imc, "tienes Sobrepeso")
+     else:
+       print("El IMC es de", imc, "tienes Obesidad"
+   ```
+
+</details>
+
+7. Definir una función que dada la longitud de tres lados h,c1,c2, retorne si puede formarse un triangulo con los mismos
+   o no, en caso afirmativo, muéstrese por pantalla el área:
+   ```math
+   h >= c + c
+   ```
+      ```math
+   s = \frac{a + b + c}{2}
+   ```
+      ```math
+   Area = \sqrt{s(s - a)(s - b)(s - c)}
+   ```
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def estriangulovalido(h, cuno, cdos):
+      if (h <= (cuno + cdos)):
+         area = (((h + cuno + cdos) / 2) * (((h + cuno + cdos) / 2) - h) * (((h + cuno + cdos) / 2) - cuno) * (((h + cuno + cdos) / 2) - cdos)) ** (1 / 2)
+         print("El área es ", area)
+         return True
+      else:
+        return False
+   ```
+
+</details>
+
+8. Definir una función esprimo, que reciba un número x y compruebe si es primo o no:
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def esprimo(n):
+      if n <= 1:
+         return False
+      for i in range(2, int(n**0.5) + 1):
+         if n % i == 0:
+            return False
+      return True
+   ```
+
+</details>
+
+9. Crear una función que dado un intervalo [A,B], invoque a la función creada anteriormente para mostrar únicamente los
+   números primos en ese intervalo:
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def dameprimosintervalo(a, b):
+      for i in range(a, b + 1, 1):
+         if (esprimo(i)):
+            print(i)
+   ```
+
+</details>
+
+10. Crear una función que compruebe si una palabra es palíndromo (se lee igual en ambos sentidos ej. ojo, nadan,radar…):
+
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def espalindromo(palabra):
+      palabradelreves="“
+      for i in range (len(palabra)-1,-1,-1):
+         palabradelreves+=palabra[i];
+      return palabra==palabradelreves
+      
+   def espalindromoslicing(palabra):
+      return palabra==palabra[::-1]
+   ```
+
+</details>
+
 ## Ejercicios con ficheros
 
 1. Implementar una función que dada la ruta de un [fichero con las temperaturas](data/31_FI_Pyhton_temperatures.csv)  en
    el que se tienen el año con las temperaturas de sus doce meses separadas por comas, devuelva una lista de
    tuplas   `[Año,máxTemp]  `
-   
+
    Extracto del fichero:
    ```console 
     1901,22.4,24.14,29.07,31.91,33.41,33.18,31.21,30.39,30.47,29.97,27.31,24.49,28.96,23.27,31.46,31.27,27.25
@@ -377,4 +604,3 @@ Proximamente...
        ```
 
 </details>
-
