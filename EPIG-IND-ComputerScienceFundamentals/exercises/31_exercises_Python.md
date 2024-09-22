@@ -51,6 +51,38 @@
    ` El resultado es 31 (1+5+25)`
    </details>
 
+3.  Dado el siguiente código:
+    ```python 
+      lista = [3, 7, 8, 12,8]
+      i = 0
+      a = 0
+      b = 10
+      while len(lista) != 0:
+        i += 1
+        if i % 2 == 0:
+          a += lista.pop()
+        else:
+          b -= lista.pop(0)
+      ```
+   Rellena la siguiente tabla:
+   
+   | Variable  | 1 | 2 | 3 | 4 | 5 | 6 |
+   |:---------:|:-:|:-:|:-:|:-:|:-:|:-:|
+   |   **i**   |   |   |   |   |   |   |
+   |   **a**   |   |   |   |   |   |   |
+   |   **b**   |   |   |   |   |   |   |
+   | **lista** |   |   |   |   |   |   |
+ <details>
+   <summary>SEE SOLUTION</summary>
+   
+   | Variable  |     1      |     2     |   3    |   4   | 5  | 6 |
+   |:---------:|:----------:|:---------:|:------:|:-----:|:--:|:-:|
+   |   **i**   |     1      |     2     |   3    |   4   | 5  |   |
+   |   **a**   |     0      |     8     |   8    |  20   | 20 |   |
+   |   **b**   |     7      |     7     |   0    |   0   | -8 |   |
+   | **lista** | [7,8,12,8] | [7,8,12]  | [8,12] |  [8]  | [] |   |
+</details>
+
 ## Ejercicios de condicionales
 
 1. Escribir las siguientes condiciones empleando la sintaxis de Python:
@@ -540,26 +572,248 @@
     <details>
       <summary>SEE SOLUTION</summary>
 
-   ```python
-   def espalindromo(palabra):
-      palabradelreves="“
-      for i in range (len(palabra)-1,-1,-1):
-         palabradelreves+=palabra[i];
-      return palabra==palabradelreves
-      
-   def espalindromoslicing(palabra):
-      return palabra==palabra[::-1]
-   ```
+      ```python
+      def espalindromo(palabra):
+         palabradelreves="“
+         for i in range (len(palabra)-1,-1,-1):
+            palabradelreves+=palabra[i];
+         return palabra==palabradelreves
+         
+      def espalindromoslicing(palabra):
+         return palabra==palabra[::-1]
+      ```
+
+</details>
+
+11. Implementar una función que permita a dos jugadores jugar a piedra papel o tijera. El programa pedirá por teclado a
+    ambos jugadores que seleccionen opción, siendo: (1) Piedra, (2) Papel(3) Tijera de manera iterativa hasta que uno de
+    los dos gane y mostrará el vencedor
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+      ```python
+      def piedra_papel_tijera():
+         player_a = 0
+         player_b = 0
+         while player_a == player_b:
+            player_a = int(input("Dime que opción quiere jugador A:\n1)Piedra\n2)Papel\n3)Tijera "))
+            player_b = int(input("Dime que opción quiere jugador B:\n1)Piedra\n2)Papel\n3)Tijera "))
+         if (player_a == 1 and player_b == 3) | (player_a == 2 and player_b == 1) | (player_a == 3 and player_b == 2):
+            print("Ha ganado el Jugador A")
+         else:
+            print("Ha ganado el Jugador B")
+      ```
 
 </details>
 
 ## Ejercicios con ficheros
+1. Definir una funcion que dada la ruta de un fichero muestre su contenido:
+    <details>
+      <summary>SEE SOLUTION</summary>
 
-1. Implementar una función que dada la ruta de un [fichero con las temperaturas](data/31_FI_Pyhton_temperatures.csv)  en
-   el que se tienen el año con las temperaturas de sus doce meses separadas por comas, devuelva una lista de
-   tuplas   `[Año,máxTemp]  `
+   ```python
+   def leelineaspares(ruta:str):
+       f = open(ruta, ’r’)
+       lista = f.readlines()
+       for  línea in lista:
+           print (línea.strip())
+       f.close()
+   ```
+
+</details>
+
+2. Definir una funcion que dada la ruta de un fichero muestre el contenido de las líneas pares:
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def leelineaspares(ruta):
+       f = open(ruta, ’r’)
+       lista = f.readlines()
+       nlinea = 1
+       for  línea in lista:
+           if(nlinea%2==0):
+               print (línea.strip())
+           nlinea+=1	
+       f.close()
+   ```
+
+</details>
+
+3. Definir una función, que dada la ruta de un fichero, pida línea a línea el contenido del mismo hasta que el usuario
+   escriba END:
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def escribeentrada(ruta):
+       f = open(ruta, ’a’)
+       linea= input(“Dame la siguiente línea \n”)
+       while (linea!=“END”	):
+           f.write(linea)
+           linea=input (“Dame la siguiente línea \n”) 	f.close()
+
+   ```
+
+</details>
+
+4. Definir una función,que lea de un fichero lineas y escriba en otros dos ficheros: (1) las líneas pares y (2) las impares:
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def escribelineaspareseimpares(rutaentrada,rutapares,rutaimpares):
+       finput = open(rutaentrada, 'r')
+       foutputpares=open(rutapares, 'a')
+       foutputimpares = open(rutaimpares, 'a')
+       lista = finput.readlines()
+       nlinea = 1
+       for  linea in lista:
+           if(nlinea%2==0):
+               foutputpares.write(linea)
+           else:
+               foutputimpares.write(linea)
+           nlinea+=1
+       finput.close()
+       foutputpares.close()
+       foutputimpares.close()
+   
+    escribelineaspareseimpares(ficheroentrada)
+   ```
+
+</details>
+
+5. Definir una función, que lea por entrada los elementos de una lista de números hasta que el usuario introduzca un 0 y
+   retorne dicha lista:
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def leelista():
+       lista=[]
+       item= float(input("Dame el elemento que quieres introducir \n"))
+       while (item!=0):
+           lista.append(item)
+           item= float(input("Dame el  siguiente elemento \n"))
+       return lista
+   print(leelista())
+   ```
+
+</details>
+
+6. Definir una función que tome por entrada una lista de números y retorne dos listas: una con los pares y otra con los impares:
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def clasificaparimpar(lista):
+       listapares=[]
+       listaimpares= []
+       for i in lista:
+           if (i%2==0):
+               listapares.append(i)
+           else:
+               listaimpares.append(i)
+   
+       return listapares,listaimpares
+   pares,impares=clasificaparimpar([1,2,3,4,5,6,7,8,9])
+   print(pares)
+   print(impares) 
+   ```
+
+</details>
+
+7. Definir una función que tome como entrada una lista con elementos de varios tipos (Flotantes, Enteros, Cadenas, Booleanos) 
+  y retorne cuatro listas con los elementos de cada tipo:
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def clasificalistas(lista):
+       listastrings=[]
+       listaenteros=[]
+       listaflotantes=[]
+       listabooleanos=[]
+       for i in lista:
+           if type(i)==type("String"):
+               listastrings.append(i)
+           elif type(i)==type(1):
+               listaenteros.append(i)
+           elif type(i)==type(2.0):
+               listaflotantes.append(i)
+           elif type(i)==type(True):
+               listabooleanos.append(i)
+       return listastrings,listaenteros,listaflotantes,listabooleanos
+   
+   list=["Hola",1.0,2,True,"Pepe",2,2.3,False]
+   strings,enteros,flotantes,booleanos=clasificalistas(list)
+   ```
+
+</details>
+
+8. Definir una función que dada una lista con números enteros, compruebe elemento a elemento y elimine aquellos que son múltiplos de 2
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def eliminamultiplosdos(lista):
+       copialista=[]
+       copialista.extend(lista)
+       for i in copialista:
+           if(i%2==0):
+               lista.remove(i)
+       return lista
+   
+   listamultiplos=list(range(1,100))
+   listamultiplos=eliminamultiplosdos(listamultiplos)
+   ```
+
+</details>
+
+9. Definir una función que reciba una lista de flotantes y un porcentaje a aplicar. La función debe de incrementar todos
+   los elementos de la lista con ese porcentaje y retornarla
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def incrementaporcentaje(lista,porcentaje):
+       for i in range(0,len(lista)):
+           lista[i]=lista[i]*(1+(porcentaje/100))
+       return  lista
+   
+   lis= [1.3,5.5,1.7,1.9,7]
+   lis=incrementaporcentaje(lis,20)
+   print(lis)
+   ```
+
+</details>
+
+
+10. Definir una función que reciba una lista y retorne otra sin elementos duplicados
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+      ```python
+      def eliminaduplicados(lista):
+          listasinduplicados=[]
+          for i in lista:
+              if ((i in listasinduplicados)==False):
+                  listasinduplicados.append(i)
+          return listasinduplicados
+      listaduplicados= [2,2,2,4,5,5,5,6,7,7,8,8,8,8]
+      listasinduplicados=eliminaduplicados(listaduplicados)
+      print(listasinduplicados) )
+      ```
+
+</details>
+
+
+11. Implementar una función que dada la ruta de un [fichero con las temperaturas](data/31_FI_Pyhton_temperatures.csv)
+    en el que se tienen el año con las temperaturas de sus doce meses separadas por comas, devuelva una lista de
+    tuplas   `[Año,máxTemp]`
 
    Extracto del fichero:
+
    ```console 
     1901,22.4,24.14,29.07,31.91,33.41,33.18,31.21,30.39,30.47,29.97,27.31,24.49,28.96,23.27,31.46,31.27,27.25
     1902,24.93,26.58,29.77,31.78,33.73,32.91,30.92,30.73,29.8,29.12,26.31,24.04,29.22,25.75,31.76,31.09,26.49
@@ -572,35 +826,73 @@
     1909,22.67,24.36,29.22,30.79,33.06,31.7,29.81,29.81,30.06,29.25,27.69,23.69,28.38,23.52,31.02,30.33,26.88
     1910,23.24,25.16,28.48,31.42,33.51,31.84,30.42,29.86,29.82,28.91,26.32,23.37,28.53,24.2,31.14,30.48,26.2
     ...
-    ```
-    <details>
+    
+  ```
+
+   <details>
       <summary>SEE SOLUTION</summary>
 
-       ```python
-        def getlistmaxtemperatures(filepath):
-            f = open(filepath, 'r')
-            content = f.readlines()
-            output = []
-            for line in content:
-                split_line = line.split(",")
-                output.append([split_line[0], max(split_line[1:])])
-            f.close()
-            return output
-        # Other solution
-        def getlistmaxtemperatures_loop(filepath):
-            f = open(filepath, 'r')
-            content = f.readlines()
-            output = []
-            for line in content:
-                split_line = line.split(",")
-                max_temp = -100.0
-                for temp in split_line[1:]:
-                    tempmonth = float(temp)
-                    if max_temp < tempmonth:
-                        max_temp = tempmonth
-                output.append([split_line[0], max_temp])
-            f.close()
-            return output
-       ```
+   ```python
+     def getlistmaxtemperatures(filepath):
+         f = open(filepath, 'r')
+         content = f.readlines()
+         output = []
+         for line in content:
+             split_line = line.split(",")
+             output.append([split_line[0], max(split_line[1:])])
+         f.close()
+         return output
+     # Other solution
+     def getlistmaxtemperatures_loop(filepath):
+         f = open(filepath, 'r')
+         content = f.readlines()
+         output = []
+         for line in content:
+             split_line = line.split(",")
+             max_temp = -100.0
+             for temp in split_line[1:]:
+                 tempmonth = float(temp)
+                 if max_temp < tempmonth:
+                     max_temp = tempmonth
+             output.append([split_line[0], max_temp])
+         f.close()
+         return output
+
+   ```
 
 </details>
+
+12. Definir una función que, dada la ruta de un fichero con un extracto bancario, devuelva el balance (positivo o
+    negativo) de la cuenta, así como el importe de los 3 mayores movimientos
+
+Extracto del fichero:
+
+   ```console 
+   Fecha_operación;fecha_valor;concepto;importe
+   30/10/2023;30/10/2023;Netflix;12.32
+   31/10/2023;31/10/2023;Supermercado;50.00
+   01/11/2023;01/11/2023;Gasolina;45.25
+   02/11/2023;02/11/2023;Restaurante;30.75
+   03/11/2023;03/11/2023;Electricidad;80.00
+   ...
+   ```
+    
+   <details>
+         <summary>SEE SOLUTION</summary>
+
+   ```python
+    def devuelvebalance_gastos(rutafichero):
+      f = open(rutafichero, 'r')
+      lineas = f.readlines()
+      lista_movimientos = []
+      balance = 0
+      for i in range(1, len(lineas)):
+         split_line = lineas[i].strip().split(";")
+         importe = float(split_line[len(split_line) - 1])
+         balance += importe
+         lista_movimientos.append(importe)
+      lista_movimientos.sort()
+      return balance, lista_movimientos[-3:]
+  ```
+
+ </details>
