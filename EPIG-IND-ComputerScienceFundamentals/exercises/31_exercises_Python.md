@@ -64,14 +64,14 @@
         else:
           b -= lista.pop(0)
       ```
-   Rellena la siguiente tabla:
-   
-   | Variable  | 1 | 2 | 3 | 4 | 5 | 6 |
-   |:---------:|:-:|:-:|:-:|:-:|:-:|:-:|
-   |   **i**   |   |   |   |   |   |   |
-   |   **a**   |   |   |   |   |   |   |
-   |   **b**   |   |   |   |   |   |   |
-   | **lista** |   |   |   |   |   |   |
+      Rellena la siguiente tabla:
+      
+      | Variable  | 1 | 2 | 3 | 4 | 5 | 6 |
+      |:---------:|:-:|:-:|:-:|:-:|:-:|:-:|
+      |   **i**   |   |   |   |   |   |   |
+      |   **a**   |   |   |   |   |   |   |
+      |   **b**   |   |   |   |   |   |   |
+      | **lista** |   |   |   |   |   |   |
  <details>
    <summary>SEE SOLUTION</summary>
    
