@@ -544,3 +544,117 @@ erDiagram
 ```
 
 </details>
+
+# DDBB Empresas de Construcción:
+
+Dibujar el modelo entidad-relación de la base de datos de unas empresas de construcción con las siguientes entidades:
+
+- `Empresa`: tienen un id (CIF), un nombre y una dirección fiscal.
+- `Edificación`: tienen un id (numcatrastro), un número de plantas, una superficie y una fecha de licitación.
+- `Aparejador`: tiene un id (numcolegiado), una edad, un nombre, una dirección, un correo y un salario.
+- `Obrero`: tiene un id, un DNI, un nombre, una edad y un salario
+- `Arquitecto`: tiene un id (numcolegiado), una edad, un nombre, dirección, correo y un salario
+- `Capataz`: tiene un id, un DNI, un nombre, una edad y un salario.
+- `Plantilla`: tiene un Id y un nombre
+
+Además sabemos que:
+
+Una empresa puede trabajar en varias edificaciones, a su vez en una edificación pueden trabajar varias plantillas
+
+Las edificaciones tienen asignado un arquitecto y un aparejador, los arquitectos y aparejadores pueden tener asignadas
+varias edificaciones.
+
+Los obreros pertenecen a una única plantilla, esta plantilla está formada por varios obreros y un capataz.El capataz
+puede dirigir varias plantillas.
+
+En una edificación pueden trabajar varias plantillas, a su vez una plantilla puede trabajar en varias edificaciones.
+
+
+<details>
+  <summary>SEE SOLUTION</summary>
+
+```mermaid
+erDiagram
+%% Entidades
+    EMPRESA {
+        string CIF PK
+        string nombre
+        string direccion_fiscal
+    }
+
+    EDIFICACION {
+        int numcatrastro PK
+        int Id_Arquitecto FK
+        int Id_Aparejador FK
+        int numero_plantas
+        float superficie
+        date fecha_licitacion
+    }
+
+    APAREJADOR {
+        int numcolegiado PK
+        int edad
+        string nombre
+        string direccion
+        string correo
+        float salario
+    }
+
+    OBRERO {
+        int id PK
+        string DNI
+        string nombre
+        int edad
+        float salario
+    }
+
+    ARQUITECTO {
+        int numcolegiado PK
+        int edad
+        string nombre
+        string direccion
+        string correo
+        float salario
+    }
+
+    CAPATAZ {
+        int id PK
+        string DNI
+        string nombre
+        int edad
+        float salario
+    }
+
+    PLANTILLA {
+        int id PK
+        int Id_Capataz FK
+        string nombre
+    }
+
+    PLANTILLA_EDIFICACION {
+        int id PK
+        int Id_Plantilla FK
+        int Id_Edificacion FK
+    }
+    EMPRESA_EDIFICACION {
+        int id PK
+        int Id_Empresa FK
+        int Id_Edificacion FK
+    }
+
+%% Relaciones
+    EMPRESA ||--o{ EMPRESA_EDIFICACION : ""
+    EDIFICACION ||--o{ EMPRESA_EDIFICACION : ""
+
+    EDIFICACION }o--|| ARQUITECTO : ""
+    EDIFICACION }o--|| APAREJADOR : ""
+
+    EDIFICACION ||--o{ PLANTILLA_EDIFICACION : ""
+    PLANTILLA ||--o{ PLANTILLA_EDIFICACION : ""
+
+    PLANTILLA }|--|| CAPATAZ : ""
+    PLANTILLA ||--o{ OBRERO : ""
+
+```
+
+</details>
