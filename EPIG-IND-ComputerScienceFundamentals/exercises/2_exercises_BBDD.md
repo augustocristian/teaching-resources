@@ -421,3 +421,126 @@ erDiagram
 ```
 
 </details>
+
+# DDBB Protectora de animales:
+
+Dibujar el modelo entidad-relación de la base de datos protectora de animales con las siguientes entidades:
+
+- `Centro`: tiene un identificador, una dirección, un teléfono, un email y un dueño.
+- `Recinto`: tiene un id, una superficie y un tipo.
+- `Animal`: tiene un id (microchip), un tipo, una fecha de entrada, una fecha de salida y un peso.
+- `Vacuna`: tiene un id, un nombre y una fecha de caducidad.
+- `Voluntario`: tiene un id, nombre, email, teléfono y una dirección.
+- `Adopción`: tiene un id, una fecha y unas observaciones.
+- `Colaboración`: tiene un id y una fecha.
+- `Adoptante`: tiene un id, un nombre, una dirección y un teléfono.
+
+Además sabemos que:
+
+Un centro tiene varios recintos, los cuales pertenecen a un único centro. En estos recintos pueden albergar a varios
+animales.
+
+Un animal puede tener varias vacunas, a su vez varios animales pueden estar vacunados con la misma vacuna.
+
+Los voluntarios pueden realizar colaboraciones, estás consisten en llevar a uno o varios animales a su casa durante un
+fin de semana.
+
+Los adoptantes realizan adopciones de un animal, un adoptante puede realizar varias adopciones.
+
+
+<details>
+  <summary>SEE SOLUTION</summary>
+
+```mermaid
+erDiagram
+
+%% Entidades
+    CENTRO {
+        int id PK
+        string direccion
+        string telefono
+        string email
+        string dueno
+    }
+
+    RECINTO {
+        int id PK
+        int Id_Centro FK
+        float superficie
+        string tipo
+
+    }
+
+    ANIMAL {
+        int microchip PK
+        int Id_Recinto FK
+        string tipo
+        date fecha_entrada
+        date fecha_salida
+        float peso
+    }
+
+    VACUNA {
+        int id PK
+        string nombre
+        date fecha_caducidad
+    }
+
+    VOLUNTARIO {
+        int id PK
+        string nombre
+        string email
+        string telefono
+        string direccion
+    }
+
+    ADOPCION {
+        int id PK
+        int Id_Animal FK
+        int Id_Adoptante FK
+        date fecha
+        string observaciones
+
+    }
+
+    COLABORACION {
+        int id PK
+        int Id_Voluntario FK
+        date fecha
+    }
+
+    ADOPTANTE {
+        int id PK
+        string nombre
+        string direccion
+        string telefono
+    }
+%%Tablas intermedias para la N a M    
+    COLABORACION_ANIMAL {
+        int id PK
+        int Id_Colaboracion FK
+        int Id_Animal FK
+    }
+    ANIMALES_VACUNAS {
+        int id PK
+        int Id_Animal FK
+        int Id_Vacuna FK
+    }
+
+%% Relaciones
+    CENTRO ||--o{ RECINTO : ""
+    RECINTO ||--o{ ANIMAL : ""
+
+
+    VOLUNTARIO ||--o{ COLABORACION : ""
+    ANIMAL ||--o{ COLABORACION_ANIMAL : ""
+    COLABORACION ||--o{ COLABORACION_ANIMAL : ""
+
+    ADOPTANTE ||--o{ ADOPCION : ""
+    ADOPCION ||--|| ANIMAL : ""
+    ANIMAL ||--o{ ANIMALES_VACUNAS : ""
+    VACUNA ||--o{ ANIMALES_VACUNAS : ""
+    
+```
+
+</details>
