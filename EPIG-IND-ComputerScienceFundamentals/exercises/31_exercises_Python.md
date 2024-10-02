@@ -7,9 +7,103 @@
 - [Ejercicios con funciones](#ejercicios-con-funciones)
 - [Ejercicios con ficheros](#ejercicios-con-ficheros)
 
+## Ejercicios de variables
+
+1. Dadas las variables a= 3 b = “pepe” c=1 d= 2 para cada expresión de la tabla siguiente, indicar si la expresión es
+   correcta o no. Si lo fuera, indicar el resultado y su tipo. Si es incorrecta indicar brevemente por qué
+
+   | Expresión  | ¿Es correcta? | Tipo y resultado | 
+   |------------|---------------|------------------|
+   | `a/d`      |               |                  |
+   | `a*b/d`    |               |                  |
+   | `a**(c/2)` |               |                  |
+   | `c%d==c`   |               |                  |
+   | `b*a**d`   |               |                  |
+
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   | Expresión  | ¿Es correcta? | Tipo y resultado                                           |
+   |------------|---------------|------------------------------------------------------------|
+   | `a/d`      | Sí            | 1.5 `float`                                                |
+   | `a*b/d`    | No            | Incorrecta, b es una cadena la cual no soporta la división |
+   | `a**(c/2)` | Sí            | 3^(√2)   `float`                                           |
+   | `c%d==c`   | Sí            | True  `bool`                                               |
+   | `b*a**d`   | Sí            | 'pepepepepepepepepepepepepepepepepepe' `str`               |
+
+   </details>
+2. ¿Qué saldrá por pantalla al ejecutar el siguiente código?
+
+   ```python 
+   j = 0
+   h = 5
+   resultado = h**j
+   j = j + 1
+   resultado = resultado + h**j
+   j = j + 1
+   resultado = resultado + h**j
+   print(resultado)
+    ```
+   Salida: `El resultado es : _ _`
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ` El resultado es 31 (1+5+25)`
+   </details>
+
+3.  Dado el siguiente código:
+    ```python 
+      lista = [3, 7, 8, 12,8]
+      i = 0
+      a = 0
+      b = 10
+      while len(lista) != 0:
+        i += 1
+        if i % 2 == 0:
+          a += lista.pop()
+        else:
+          b -= lista.pop(0)
+      ```
+      Rellena la siguiente tabla:
+      
+      | Variable  | 1 | 2 | 3 | 4 | 5 | 6 |
+      |:---------:|:-:|:-:|:-:|:-:|:-:|:-:|
+      |   **i**   |   |   |   |   |   |   |
+      |   **a**   |   |   |   |   |   |   |
+      |   **b**   |   |   |   |   |   |   |
+      | **lista** |   |   |   |   |   |   |
+ <details>
+   <summary>SEE SOLUTION</summary>
+   
+   | Variable  |     1      |     2     |   3    |   4   | 5  | 6 |
+   |:---------:|:----------:|:---------:|:------:|:-----:|:--:|:-:|
+   |   **i**   |     1      |     2     |   3    |   4   | 5  |   |
+   |   **a**   |     0      |     8     |   8    |  20   | 20 |   |
+   |   **b**   |     7      |     7     |   0    |   0   | -8 |   |
+   | **lista** | [7,8,12,8] | [7,8,12]  | [8,12] |  [8]  | [] |   |
+</details>
+
 ## Ejercicios de condicionales
 
-Proximamente...
+1. Escribir las siguientes condiciones empleando la sintaxis de Python:
+    1. El resto de dividir `X` entre `Y` es mayor que `Y` elevado al cuadrado.  `Y` se encuentra en el intervalo [1,4)
+    2. Y más 5 es distinto de `Z` así como `Z` más 4 es menor que `Y`. `X` e `Y` se encuentran en el intervalo (2,5)
+       ```python 
+       Escribe la solución aquí:
+    
+    
+    
+    
+         ```
+   <details>
+      <summary>SEE SOLUTION</summary>
+
+      ```python 
+               i) ((X%Y)>(Y**2) ) &((Y>=1)&(Y<4))
+               ii) ((Y+5)!=Z) & (Z+4<Y) & (Z>2)&(Z<5) & (Y>2)&(Y<5)
+      ```
+
+ </details>
 
 ## Ejercicios de bucles
 
@@ -302,7 +396,60 @@ Proximamente...
 
 ## Ejercicios con funciones
 
-1. Definir una función DNIValido que, dado un número de DNI, retorne True si es válido y False si no lo es. Para que un
+1. Definir una función que dados dos números (el primero menor que el segundo) muestre por pantalla todos los números
+   pares que hay en dicho intervalo
+
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def paresintervalo(n,m):
+      for i in range (n,m,1)
+         if(i%2==0):
+            print (i)
+   ```
+
+</details>
+
+2. Definir una función que dados dos números (el primero menor que el segundo) RETORNE una cadena con todos los impares
+   del intervalo
+
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def imparesintervalo(n,m):
+      salida=“”
+      for i in range (n,m,1)
+         if(i%2!=0):
+      return salida
+   ```
+
+</details>
+
+3. Definir una función que dada una nota (numérica) devuelva si es un “SUSPENSO”, “APROBADO”, “NOTABLE” o
+   “SOBRESALIENTE””
+
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def notastring(nota):
+      salida=“”
+      If (nota<5):
+         salida=“SUSPENSO”
+      elif (nota>=5)&(nota<7):
+         salida =“APROBADO”
+      elif (nota>=7)&(nota<9):
+         salida =“NOTABLE”
+      else:
+         salida= “SOBRESALIENTE”
+   return salida
+   ```
+
+</details>
+
+4. Definir una función DNIValido que, dado un número de DNI, retorne True si es válido y False si no lo es. Para que un
    número de DNI sea válido debe de tener 9 dígitos y una letra mayúscula
 
     <details>
@@ -326,13 +473,347 @@ Proximamente...
 
 </details>
 
-## Ejercicios con ficheros
+5. Definir una función que dada una cantidad de grados celsius, retorne el equivalente en escala Kelvin y Farenheit. (
+   0ºC= 273 ºK, ºF= ℃ * 1.8000+32.00
 
-1. Implementar una función que dada la ruta de un [fichero con las temperaturas](data/31_FI_Pyhton_temperatures.csv)  en
-   el que se tienen el año con las temperaturas de sus doce meses separadas por comas, devuelva una lista de
-   tuplas   `[Año,máxTemp]  `
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def dameGrados(centigrados):
+      gradosKelvin=centigrados+273
+      gradosFarenheit=centigrados* 1.8000+ 32.00
+      return gradosKelvin,gradosFarenheit
+   kelvin,farenheit = dameGrados(30)
+   ```
+   </details>
+
+6. Definir una función que dado el peso y altura de un paciente muestre por pantalla (1) su IMC y (2) su estado
+   siendo este:
+   ```math
+   IMC = \frac{Peso}{Altura^2}
+   ```
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def dameimc(peso, altura):
+     imc = peso / (altura ** 2)
+     if (imc < 18.5):
+       print("El IMC es de", imc, "tienes un peso bajo")
+     elif ((imc >= 18.5) & (imc <= 24.9)):
+       print("El IMC es de", imc, "tienes un peso Normal")
+     elif ((imc >= 25) & (imc <= 29.9)):
+       print("El IMC es de", imc, "tienes Sobrepeso")
+     else:
+       print("El IMC es de", imc, "tienes Obesidad"
+   ```
+
+</details>
+
+7. Definir una función que dada la longitud de tres lados h,c1,c2, retorne si puede formarse un triangulo con los mismos
+   o no, en caso afirmativo, muéstrese por pantalla el área:
+   ```math
+   h >= c + c
+   ```
+      ```math
+   s = \frac{a + b + c}{2}
+   ```
+      ```math
+   Area = \sqrt{s(s - a)(s - b)(s - c)}
+   ```
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def estriangulovalido(h, cuno, cdos):
+      if (h <= (cuno + cdos)):
+         area = (((h + cuno + cdos) / 2) * (((h + cuno + cdos) / 2) - h) * (((h + cuno + cdos) / 2) - cuno) * (((h + cuno + cdos) / 2) - cdos)) ** (1 / 2)
+         print("El área es ", area)
+         return True
+      else:
+        return False
+   ```
+
+</details>
+
+8. Definir una función esprimo, que reciba un número x y compruebe si es primo o no:
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def esprimo(n):
+      if n <= 1:
+         return False
+      for i in range(2, int(n**0.5) + 1):
+         if n % i == 0:
+            return False
+      return True
+   ```
+
+</details>
+
+9. Crear una función que dado un intervalo [A,B], invoque a la función creada anteriormente para mostrar únicamente los
+   números primos en ese intervalo:
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def dameprimosintervalo(a, b):
+      for i in range(a, b + 1, 1):
+         if (esprimo(i)):
+            print(i)
+   ```
+
+</details>
+
+10. Crear una función que compruebe si una palabra es palíndromo (se lee igual en ambos sentidos ej. ojo, nadan,radar…):
+
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+      ```python
+      def espalindromo(palabra):
+         palabradelreves="“
+         for i in range (len(palabra)-1,-1,-1):
+            palabradelreves+=palabra[i];
+         return palabra==palabradelreves
+         
+      def espalindromoslicing(palabra):
+         return palabra==palabra[::-1]
+      ```
+
+</details>
+
+11. Implementar una función que permita a dos jugadores jugar a piedra papel o tijera. El programa pedirá por teclado a
+    ambos jugadores que seleccionen opción, siendo: (1) Piedra, (2) Papel(3) Tijera de manera iterativa hasta que uno de
+    los dos gane y mostrará el vencedor
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+      ```python
+      def piedra_papel_tijera():
+         player_a = 0
+         player_b = 0
+         while player_a == player_b:
+            player_a = int(input("Dime que opción quiere jugador A:\n1)Piedra\n2)Papel\n3)Tijera "))
+            player_b = int(input("Dime que opción quiere jugador B:\n1)Piedra\n2)Papel\n3)Tijera "))
+         if (player_a == 1 and player_b == 3) | (player_a == 2 and player_b == 1) | (player_a == 3 and player_b == 2):
+            print("Ha ganado el Jugador A")
+         else:
+            print("Ha ganado el Jugador B")
+      ```
+
+</details>
+
+## Ejercicios con ficheros
+1. Definir una funcion que dada la ruta de un fichero muestre su contenido:
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def leelineaspares(ruta:str):
+       f = open(ruta, ’r’)
+       lista = f.readlines()
+       for  línea in lista:
+           print (línea.strip())
+       f.close()
+   ```
+
+</details>
+
+2. Definir una funcion que dada la ruta de un fichero muestre el contenido de las líneas pares:
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def leelineaspares(ruta):
+       f = open(ruta, ’r’)
+       lista = f.readlines()
+       nlinea = 1
+       for  línea in lista:
+           if(nlinea%2==0):
+               print (línea.strip())
+           nlinea+=1	
+       f.close()
+   ```
+
+</details>
+
+3. Definir una función, que dada la ruta de un fichero, pida línea a línea el contenido del mismo hasta que el usuario
+   escriba END:
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def escribeentrada(ruta):
+       f = open(ruta, ’a’)
+       linea= input(“Dame la siguiente línea \n”)
+       while (linea!=“END”	):
+           f.write(linea)
+           linea=input (“Dame la siguiente línea \n”) 	f.close()
+
+   ```
+
+</details>
+
+4. Definir una función,que lea de un fichero lineas y escriba en otros dos ficheros: (1) las líneas pares y (2) las impares:
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def escribelineaspareseimpares(rutaentrada,rutapares,rutaimpares):
+       finput = open(rutaentrada, 'r')
+       foutputpares=open(rutapares, 'a')
+       foutputimpares = open(rutaimpares, 'a')
+       lista = finput.readlines()
+       nlinea = 1
+       for  linea in lista:
+           if(nlinea%2==0):
+               foutputpares.write(linea)
+           else:
+               foutputimpares.write(linea)
+           nlinea+=1
+       finput.close()
+       foutputpares.close()
+       foutputimpares.close()
    
+    escribelineaspareseimpares(ficheroentrada)
+   ```
+
+</details>
+
+5. Definir una función, que lea por entrada los elementos de una lista de números hasta que el usuario introduzca un 0 y
+   retorne dicha lista:
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def leelista():
+       lista=[]
+       item= float(input("Dame el elemento que quieres introducir \n"))
+       while (item!=0):
+           lista.append(item)
+           item= float(input("Dame el  siguiente elemento \n"))
+       return lista
+   print(leelista())
+   ```
+
+</details>
+
+6. Definir una función que tome por entrada una lista de números y retorne dos listas: una con los pares y otra con los impares:
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def clasificaparimpar(lista):
+       listapares=[]
+       listaimpares= []
+       for i in lista:
+           if (i%2==0):
+               listapares.append(i)
+           else:
+               listaimpares.append(i)
+   
+       return listapares,listaimpares
+   pares,impares=clasificaparimpar([1,2,3,4,5,6,7,8,9])
+   print(pares)
+   print(impares) 
+   ```
+
+</details>
+
+7. Definir una función que tome como entrada una lista con elementos de varios tipos (Flotantes, Enteros, Cadenas, Booleanos) 
+  y retorne cuatro listas con los elementos de cada tipo:
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def clasificalistas(lista):
+       listastrings=[]
+       listaenteros=[]
+       listaflotantes=[]
+       listabooleanos=[]
+       for i in lista:
+           if type(i)==type("String"):
+               listastrings.append(i)
+           elif type(i)==type(1):
+               listaenteros.append(i)
+           elif type(i)==type(2.0):
+               listaflotantes.append(i)
+           elif type(i)==type(True):
+               listabooleanos.append(i)
+       return listastrings,listaenteros,listaflotantes,listabooleanos
+   
+   list=["Hola",1.0,2,True,"Pepe",2,2.3,False]
+   strings,enteros,flotantes,booleanos=clasificalistas(list)
+   ```
+
+</details>
+
+8. Definir una función que dada una lista con números enteros, compruebe elemento a elemento y elimine aquellos que son múltiplos de 2
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def eliminamultiplosdos(lista):
+       copialista=[]
+       copialista.extend(lista)
+       for i in copialista:
+           if(i%2==0):
+               lista.remove(i)
+       return lista
+   
+   listamultiplos=list(range(1,100))
+   listamultiplos=eliminamultiplosdos(listamultiplos)
+   ```
+
+</details>
+
+9. Definir una función que reciba una lista de flotantes y un porcentaje a aplicar. La función debe de incrementar todos
+   los elementos de la lista con ese porcentaje y retornarla
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+   ```python
+   def incrementaporcentaje(lista,porcentaje):
+       for i in range(0,len(lista)):
+           lista[i]=lista[i]*(1+(porcentaje/100))
+       return  lista
+   
+   lis= [1.3,5.5,1.7,1.9,7]
+   lis=incrementaporcentaje(lis,20)
+   print(lis)
+   ```
+
+</details>
+
+
+10. Definir una función que reciba una lista y retorne otra sin elementos duplicados
+    <details>
+      <summary>SEE SOLUTION</summary>
+
+      ```python
+      def eliminaduplicados(lista):
+          listasinduplicados=[]
+          for i in lista:
+              if ((i in listasinduplicados)==False):
+                  listasinduplicados.append(i)
+          return listasinduplicados
+      listaduplicados= [2,2,2,4,5,5,5,6,7,7,8,8,8,8]
+      listasinduplicados=eliminaduplicados(listaduplicados)
+      print(listasinduplicados) )
+      ```
+
+</details>
+
+
+11. Implementar una función que dada la ruta de un [fichero con las temperaturas](data/31_FI_Pyhton_temperatures.csv)
+    en el que se tienen el año con las temperaturas de sus doce meses separadas por comas, devuelva una lista de
+    tuplas   `[Año,máxTemp]`
+
    Extracto del fichero:
+
    ```console 
     1901,22.4,24.14,29.07,31.91,33.41,33.18,31.21,30.39,30.47,29.97,27.31,24.49,28.96,23.27,31.46,31.27,27.25
     1902,24.93,26.58,29.77,31.78,33.73,32.91,30.92,30.73,29.8,29.12,26.31,24.04,29.22,25.75,31.76,31.09,26.49
@@ -345,36 +826,73 @@ Proximamente...
     1909,22.67,24.36,29.22,30.79,33.06,31.7,29.81,29.81,30.06,29.25,27.69,23.69,28.38,23.52,31.02,30.33,26.88
     1910,23.24,25.16,28.48,31.42,33.51,31.84,30.42,29.86,29.82,28.91,26.32,23.37,28.53,24.2,31.14,30.48,26.2
     ...
-    ```
-    <details>
+    
+  ```
+
+   <details>
       <summary>SEE SOLUTION</summary>
 
-       ```python
-        def getlistmaxtemperatures(filepath):
-            f = open(filepath, 'r')
-            content = f.readlines()
-            output = []
-            for line in content:
-                split_line = line.split(",")
-                output.append([split_line[0], max(split_line[1:])])
-            f.close()
-            return output
-        # Other solution
-        def getlistmaxtemperatures_loop(filepath):
-            f = open(filepath, 'r')
-            content = f.readlines()
-            output = []
-            for line in content:
-                split_line = line.split(",")
-                max_temp = -100.0
-                for temp in split_line[1:]:
-                    tempmonth = float(temp)
-                    if max_temp < tempmonth:
-                        max_temp = tempmonth
-                output.append([split_line[0], max_temp])
-            f.close()
-            return output
-       ```
+   ```python
+     def getlistmaxtemperatures(filepath):
+         f = open(filepath, 'r')
+         content = f.readlines()
+         output = []
+         for line in content:
+             split_line = line.split(",")
+             output.append([split_line[0], max(split_line[1:])])
+         f.close()
+         return output
+     # Other solution
+     def getlistmaxtemperatures_loop(filepath):
+         f = open(filepath, 'r')
+         content = f.readlines()
+         output = []
+         for line in content:
+             split_line = line.split(",")
+             max_temp = -100.0
+             for temp in split_line[1:]:
+                 tempmonth = float(temp)
+                 if max_temp < tempmonth:
+                     max_temp = tempmonth
+             output.append([split_line[0], max_temp])
+         f.close()
+         return output
+
+   ```
 
 </details>
 
+12. Definir una función que, dada la ruta de un fichero con un extracto bancario, devuelva el balance (positivo o
+    negativo) de la cuenta, así como el importe de los 3 mayores movimientos
+
+Extracto del fichero:
+
+   ```console 
+   Fecha_operación;fecha_valor;concepto;importe
+   30/10/2023;30/10/2023;Netflix;12.32
+   31/10/2023;31/10/2023;Supermercado;50.00
+   01/11/2023;01/11/2023;Gasolina;45.25
+   02/11/2023;02/11/2023;Restaurante;30.75
+   03/11/2023;03/11/2023;Electricidad;80.00
+   ...
+   ```
+    
+   <details>
+         <summary>SEE SOLUTION</summary>
+
+   ```python
+    def devuelvebalance_gastos(rutafichero):
+      f = open(rutafichero, 'r')
+      lineas = f.readlines()
+      lista_movimientos = []
+      balance = 0
+      for i in range(1, len(lineas)):
+         split_line = lineas[i].strip().split(";")
+         importe = float(split_line[len(split_line) - 1])
+         balance += importe
+         lista_movimientos.append(importe)
+      lista_movimientos.sort()
+      return balance, lista_movimientos[-3:]
+  ```
+
+ </details>
