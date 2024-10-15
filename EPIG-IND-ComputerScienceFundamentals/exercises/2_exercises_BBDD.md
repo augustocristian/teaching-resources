@@ -113,10 +113,11 @@ Dibujar el modelo entidad-relación de la base de datos hospitales compuesto de 
 - `Sala`: con un ID, un nombre, y un número de camas.
 - `Estancias`: con un ID, una fecha de entrada y salida.
 - `Doctores`: con un ID y un nombre.
-- `Plantilla`: con un ID, un nombre, una función, turno y salario.
+- `Plantilla`: con un ID, un nombre y turno.
 - `Especialidades`: con su ID y su nombre.
 - `Enfermedades`: con un ID y su nombre.
 - `Pacientes`: con su ID, nombre, dirección, fecha de nacimiento, sexo y número de la seguridad social.
+- `Empleados`: con su ID, nombre, apellidos, puesto y salario.
 
 Además sabemos que:
 
@@ -125,7 +126,7 @@ Un paciente puede realizar una o varias estancias, asociadas a una misma o difer
 Las estancias pueden realizarse en una misma o diferentes salas. Estas salas pertenecen a un hospital, el cual puede
 tener varias de estas.
 
-Una sala tiene asociada una plantilla, compuesta por uno o varios empleados.
+Una sala tiene asociada una plantilla, compuesta por uno o varios empleados. Una misma plantilla puede trabajar en varias Salas.
 
 El hospital tiene uno o varios doctores, pertenecientes a una especialidad.
 
@@ -134,14 +135,14 @@ El hospital tiene uno o varios doctores, pertenecientes a una especialidad.
 
 ```mermaid
 erDiagram
-    hospital {
+    Hospital {
         VARCHAR(5) Id_Hospital PK
         VARCHAR(20) nombreHospital
         VARCHAR(30) direccion
         VARCHAR(20) telefono
     }
 
-    pacientes {
+    Pacientes {
         VARCHAR(8) Id_Paciente PK
         VARCHAR(20) nombrePaciente
         VARCHAR(20) direccion
@@ -150,12 +151,12 @@ erDiagram
         VARCHAR(12) NSS
     }
 
-    enfermedades {
+    Enfermedades {
         VARCHAR(5) Id_Enfermedad PK
         VARCHAR(20) nombreEnfermedad
     }
 
-    estancias {
+    Estancias {
         INTEGER Id_Estancia PK
         VARCHAR(8) Id_Paciente FK
         DATE fechaEntrada
@@ -165,43 +166,40 @@ erDiagram
         VARCHAR(5) Id_Enfermedad FK
     }
 
-    sala {
+    Sala {
         INTEGER Id_Sala PK
         VARCHAR(5) Id_Hospital FK
-        VARCHAR(25) nombreSala
-        INTEGER numCamas
+        VARCHAR(25) NombreSala
+        INTEGER NumCamas
     }
 
-    doctor {
+    Doctor {
         VARCHAR(8) Id_Doctor PK
         VARCHAR(5) Id_Hospital FK
-        VARCHAR(25) nombreDoctor
+        VARCHAR(25) NombreDoctor
         VARCHAR(5) Id_Especialidad FK
     }
 
-    plantilla {
-        VARCHAR(8) Id_Empleado PK
-        VARCHAR(5) Id_Hospital FK
+    Plantilla {
+        VARCHAR(8) Id_Plantilla PK
         INTEGER Id_Sala FK
-        VARCHAR(25) nombreEmpleado
-        VARCHAR(25) funcion
-        VARCHAR(1) turno
-        FLOAT salarioanual
+        VARCHAR(25) Nombre
+        VARCHAR(1) Turno
     }
 
-    especialidades {
+    Especialidades {
         VARCHAR(5) Id_Especialidad PK
-        VARCHAR(15) nombreEspecialidad
+        VARCHAR(15) NombreEspecialidad
     }
 
 %% Relaciones
-    especialidades ||--o{ doctor: ""
-    pacientes ||--o{ estancias: ""
-    enfermedades ||--o{ estancias: ""
-    hospital ||--o{ sala: ""
-    hospital ||--o{ doctor: ""
-    sala ||--o{ estancias: ""
-    hospital ||--o{ plantilla: ""
+    Especialidades ||--o{ Doctor: ""
+    Pacientes ||--o{ Estancias: ""
+    Enfermedades ||--o{ Estancias: ""
+    Hospital ||--o{ Sala: ""
+    Hospital ||--o{ Doctor: ""
+    Sala ||--o{ Estancias: ""
+    Plantilla ||--o{ Sala: ""
 
 ```
 
@@ -238,56 +236,58 @@ Existe un usuario único que es el administrador de la tienda, este a su vez pue
 
 ```mermaid
 erDiagram
-    productos {
+    Productos {
         INTEGER Id_Producto PK
         INTEGER Id_Vendedor FK
-        VARCHAR(25) nombre
-        INTEGER precio
-        VARCHAR(1) estado
-        DATE fechaCreacion
+        VARCHAR(25) Nombre
+        INTEGER Precio
+        VARCHAR(1) Estado
+        DATE FechaCreacion
     }
 
-    etiquetas_producto {
+    Etiquetas_Producto {
+        INTEGER Id_Etiq_Prod PK
         INTEGER Id_Producto FK
         VARCHAR(5) Id_Etiqueta FK
     }
 
-    etiquetas {
+    Etiquetas {
         VARCHAR(5) Id_Etiqueta PK
-        VARCHAR(25) nombre
+        VARCHAR(25) Nombre
     }
 
-    items_pedido {
-        INTEGER ID_Pedido FK
-        INTEGER ID_Producto FK
-        INTEGER cantidad
+    Items_Pedido {
+        INTEGER Id_Item_Ped PK
+        INTEGER Id_Pedido FK
+        INTEGER Id_Producto FK
+        INTEGER Cantidad
     }
 
-    pedidos {
+    Pedidos {
         INTEGER Id_Pedido PK
-        INTEGER ID_Usuario FK
-        VARCHAR(1) estado
-        DATE fechaCreacion
+        INTEGER Id_Usuario FK
+        VARCHAR(1) Estado
+        DATE FechaCreacion
     }
 
-    pais {
+    Pais {
         VARCHAR(4) Id_Pais PK
-        VARCHAR(25) nombre
-        VARCHAR(25) nombreContinente
+        VARCHAR(25) Nombre
+        VARCHAR(25) NombreContinente
     }
 
-    tienda {
-        INTEGER Id_Pais PK
+    Tienda {
+        INTEGER Id_Tienda PK
         VARCHAR(4) Id_Pais FK
-        VARCHAR(25) nombre
-        DATE fechaCreacion
+        VARCHAR(25) Nombre
+        DATE FechaCreacion
         INTEGER Id_Admin FK
     }
 
     Usuarios {
         INTEGER Id_Usuario PK
-        VARCHAR(25) nombreCompleto
-        DATE fechaCreacion
+        VARCHAR(25) NombreCompleto
+        DATE FechaCreacion
         VARCHAR(4) Id_Pais FK
     }
 
@@ -295,20 +295,21 @@ erDiagram
         INTEGER Id_Temporada PK
         INTEGER Id_Vendedor FK
         VARCHAR(4) Id_Pais FK
-        DATE fechaInicio
-        DATE fechaFin
+        DATE FechaInicio
+        DATE FechaFin
     }
 
 %% Relaciones
-    productos ||--o{ etiquetas_producto: ""
-    etiquetas ||--o{ etiquetas_producto: ""
-    pedidos ||--o{ items_pedido: ""
-    productos ||--o{ items_pedido: ""
-    Usuarios ||--o{ pedidos : ""
-    pais ||--o{ tienda: ""
-    pais ||--o{ Usuarios: ""
-    tienda ||--o{ Temporada: ""
-    tienda ||--o{ productos: ""
+    Productos ||--o{ Etiquetas_Producto: ""
+    Etiquetas ||--o{ Etiquetas_Producto: ""
+    Pedidos ||--o{ Items_Pedido: ""
+    Productos ||--o{ Items_Pedido: ""
+    Usuarios ||--o{ Pedidos : ""
+    Pais ||--o{ Tienda: ""
+    Pais ||--o{ Usuarios: ""
+    Tienda ||--o{ Temporada: ""
+    Tienda ||--o{ Productos: ""
+    Usuarios ||--o{ Tienda: ""
 
 
 ```
@@ -329,7 +330,9 @@ Dibujar el modelo entidad-relación de la base de datos:
 
 Además sabemos que:
 
-Un libro puede estar escrito por uno o varios autores, pero pertenece a una sola editorial, la cual tiene varios libros.
+Un libro puede estar escrito por uno o varios autores y un autor puede escribir muchos libros.
+
+Un libro  pertenece a una sola editorial, la cual tiene varios libros.
 
 Un vendedor tiene en stock varios libros, a su vez un mismo libro puede estar ofrecido por varios vendedores.
 
@@ -347,8 +350,8 @@ erDiagram
 %% Entidades
     Autor {
         INTEGER Id_Autor
-        VARCHAR(25) nombre
-        VARCHAR(25) pais
+        VARCHAR(25) Nombre
+        VARCHAR(25) Pais
         VARCHAR(35) URL
     }
 
@@ -360,49 +363,49 @@ erDiagram
 
     Libro {
         INTEGER ISBN PK
-        INTEGER anioPublicacion
-        VARCHAR(25) titulo
-        FLOAT precio
+        INTEGER AnoPublicacion
+        VARCHAR(25) Titulo
+        FLOAT Precio
     }
 
     Editorial {
         INTEGER Id_Editorial PK
-        VARCHAR(25) nombre
-        VARCHAR(35) direccion
-        VARCHAR(9) telefono
+        VARCHAR(25) Nombre
+        VARCHAR(35) Direccion
+        VARCHAR(9) Telefono
         VARCHAR(35) URL
     }
 
     VendedorOnline {
         INTEGER Id_Vendedor PK
-        VARCHAR(25) email
+        VARCHAR(25) Email
         VARCHAR(35) URL
     }
 
     CestaCompra {
         INTEGER Id_Cesta PK
         INTEGER Id_Comprador FK
-        INTEGER cantidad
+        INTEGER Cantidad
     }
 
     Comprador {
         INTEGER Id_Comprador PK
-        VARCHAR(25) nombre
-        VARCHAR(35) direccion
-        VARCHAR(25) email
-        VARCHAR(25) numTarjeta
+        VARCHAR(25) Nombre
+        VARCHAR(35) Direccion
+        VARCHAR(25) Email
+        VARCHAR(25) NumTarjeta
     }
 
     Pedido {
         INTEGER Id_Pedido
-        DATE fecha
-        VARCHAR(35) direccionEnvio
+        DATE Fecha
+        VARCHAR(35) DireccionEnvio
     }
     ItemsCesta{
         INTEGER Id_ItemsCesta PK
         INTEGER Id_Cesta FK
         INTEGER ISBN FK
-        INTEGER cantidad
+        INTEGER Cantidad
     }
 
 %% Relaciones
@@ -455,91 +458,90 @@ Los adoptantes realizan adopciones de un animal, un adoptante puede realizar var
 erDiagram
 
 %% Entidades
-    CENTRO {
-        int id PK
-        string direccion
-        string telefono
-        string email
-        string dueno
+    Centro {
+        int Id_Centro PK
+        string Direccion
+        string Telefono
+        string Email
+        string Dueno
     }
 
-    RECINTO {
-        int id PK
+    Recinto {
+        int Id_Recito PK
         int Id_Centro FK
-        float superficie
-        string tipo
+        float Superficie
+        string Tipo
 
     }
 
-    ANIMAL {
-        int microchip PK
-        int Id_Recinto FK
-        string tipo
-        date fecha_entrada
-        date fecha_salida
-        float peso
+    Animal {
+        int Microchip PK
+        int Id_recinto FK
+        string Tipo
+        date FechaEntrada
+        date FechaSalida
+        float Peso
     }
 
-    VACUNA {
-        int id PK
-        string nombre
-        date fecha_caducidad
+    Vacuna {
+        int Id_Vacuna PK
+        string Nombre
+        date FechaCaducidad
     }
 
-    VOLUNTARIO {
-        int id PK
-        string nombre
-        string email
-        string telefono
-        string direccion
+    Voluntario {
+        int Id_Voluntario PK
+        string Nombre
+        string Email
+        string Telefono
+        string Direccion
     }
 
-    ADOPCION {
-        int id PK
+    Adopcion {
+        int id_Adopcion PK
         int Id_Animal FK
         int Id_Adoptante FK
-        date fecha
-        string observaciones
+        date Fecha
+        string Observaciones
 
     }
 
-    COLABORACION {
-        int id PK
+    Colaboracion {
+        int Id_Colaboracion PK
         int Id_Voluntario FK
-        date fecha
+        date Fecha
     }
 
-    ADOPTANTE {
-        int id PK
-        string nombre
-        string direccion
-        string telefono
+    Adoptante {
+        int id_Adoptante PK
+        string Nombre
+        string Direccion
+        string Telefono
     }
 %%Tablas intermedias para la N a M    
-    COLABORACION_ANIMAL {
-        int id PK
+    Colaboracion_Animal {
+        int id_Colab_Animal PK
         int Id_Colaboracion FK
         int Id_Animal FK
     }
-    ANIMALES_VACUNAS {
-        int id PK
+    Animales_Vacunas {
+        int Id_Animal_Vacuna PK
         int Id_Animal FK
         int Id_Vacuna FK
     }
 
 %% Relaciones
-    CENTRO ||--o{ RECINTO : ""
-    RECINTO ||--o{ ANIMAL : ""
+    Centro ||--o{ Recinto : ""
+    Recinto ||--o{ Animal : ""
 
+    Voluntario ||--o{ Colaboracion : ""
+    Animal ||--o{ Colaboracion_Animal : ""
+    Colaboracion ||--o{ Colaboracion_Animal : ""
 
-    VOLUNTARIO ||--o{ COLABORACION : ""
-    ANIMAL ||--o{ COLABORACION_ANIMAL : ""
-    COLABORACION ||--o{ COLABORACION_ANIMAL : ""
-
-    ADOPTANTE ||--o{ ADOPCION : ""
-    ADOPCION ||--|| ANIMAL : ""
-    ANIMAL ||--o{ ANIMALES_VACUNAS : ""
-    VACUNA ||--o{ ANIMALES_VACUNAS : ""
+    Adoptante ||--o{ Adopcion : ""
+    Adopcion ||--|| Animal : ""
+    Animal ||--o{ Animales_Vacunas : ""
+    Vacuna ||--o{ Animales_Vacunas : ""
     
 ```
 
@@ -550,18 +552,18 @@ erDiagram
 Dibujar el modelo entidad-relación de la base de datos de unas empresas de construcción con las siguientes entidades:
 
 - `Empresa`: tienen un id (CIF), un nombre y una dirección fiscal.
-- `Edificación`: tienen un id (numcatrastro), un número de plantas, una superficie y una fecha de licitación.
-- `Aparejador`: tiene un id (numcolegiado), una edad, un nombre, una dirección, un correo y un salario.
+- `Edificación`: tienen un id (NumCatrastro), un número de plantas, una superficie y una fecha de licitación.
+- `Aparejador`: tiene un id (NumTecnico), una edad, un nombre, una dirección, un correo y un salario.
 - `Obrero`: tiene un id, un DNI, un nombre, una edad y un salario
-- `Arquitecto`: tiene un id (numcolegiado), una edad, un nombre, dirección, correo y un salario
+- `Arquitecto`: tiene un id (NumColegiado), una edad, un nombre, dirección, correo y un salario
 - `Capataz`: tiene un id, un DNI, un nombre, una edad y un salario.
 - `Plantilla`: tiene un Id y un nombre
 
 Además sabemos que:
 
-Una empresa puede trabajar en varias edificaciones, a su vez en una edificación pueden trabajar varias plantillas
+Una empresa puede trabajar en varias edificaciones, a su vez en una edificación pueden trabajar varias empresas.
 
-Las edificaciones tienen asignado un arquitecto y un aparejador, los arquitectos y aparejadores pueden tener asignadas
+Una edificación tiene asignado un arquitecto y un aparejador, los arquitectos y aparejadores pueden tener asignadas
 varias edificaciones.
 
 Los obreros pertenecen a una única plantilla, esta plantilla está formada por varios obreros y un capataz.El capataz
@@ -576,84 +578,84 @@ En una edificación pueden trabajar varias plantillas, a su vez una plantilla pu
 ```mermaid
 erDiagram
 %% Entidades
-    EMPRESA {
+    Empresa {
         string CIF PK
-        string nombre
-        string direccion_fiscal
+        string Nombre
+        string DireccionFiscal
     }
 
-    EDIFICACION {
-        int numcatrastro PK
+    Edificacion {
+        int NumCatrastro PK
         int Id_Arquitecto FK
         int Id_Aparejador FK
-        int numero_plantas
-        float superficie
-        date fecha_licitacion
+        int NumeroPlantas
+        float Superficie
+        date FechaLicitacion
     }
 
-    APAREJADOR {
-        int numcolegiado PK
-        int edad
-        string nombre
-        string direccion
-        string correo
-        float salario
+    Aparejador {
+        int NumTecnico PK
+        int Edad
+        string Nombre
+        string Direccion
+        string Correo
+        float Salario
     }
 
-    OBRERO {
+    Obrero {
         int id PK
         string DNI
-        string nombre
-        int edad
-        float salario
+        string Nombre
+        int Edad
+        float Salario
     }
 
-    ARQUITECTO {
-        int numcolegiado PK
-        int edad
-        string nombre
-        string direccion
-        string correo
-        float salario
+    Arquitecto {
+        int NumColegiado PK
+        int Edad
+        string Nombre
+        string Direccion
+        string Correo
+        float Salario
     }
 
-    CAPATAZ {
-        int id PK
+    Capataz {
+        int Id_Capataz PK
         string DNI
-        string nombre
-        int edad
-        float salario
+        string Nombre
+        int Edad
+        float Salario
     }
 
-    PLANTILLA {
-        int id PK
+    Plantilla {
+        int Id_Plantilla PK
         int Id_Capataz FK
-        string nombre
+        string Nombre
     }
 
-    PLANTILLA_EDIFICACION {
-        int id PK
+    Plantilla_Edificacion {
+        int id_Plantilla_Edif PK
         int Id_Plantilla FK
         int Id_Edificacion FK
     }
-    EMPRESA_EDIFICACION {
+    Empresa_Edificacion {
         int id PK
         int Id_Empresa FK
         int Id_Edificacion FK
     }
 
 %% Relaciones
-    EMPRESA ||--o{ EMPRESA_EDIFICACION : ""
-    EDIFICACION ||--o{ EMPRESA_EDIFICACION : ""
+    Empresa ||--o{ Empresa_Edificacion: ""
+    Edificacion ||--o{ Empresa_Edificacion: ""
 
-    EDIFICACION }o--|| ARQUITECTO : ""
-    EDIFICACION }o--|| APAREJADOR : ""
+    Edificacion }o--|| Arquitecto: ""
+    Edificacion }o--|| Aparejador : ""
 
-    EDIFICACION ||--o{ PLANTILLA_EDIFICACION : ""
-    PLANTILLA ||--o{ PLANTILLA_EDIFICACION : ""
+    Edificacion ||--o{ Plantilla_Edificacion : ""
+    Plantilla ||--o{ Plantilla_Edificacion : ""
 
-    PLANTILLA }|--|| CAPATAZ : ""
-    PLANTILLA ||--o{ OBRERO : ""
+    Plantilla }|--|| Capataz : ""
+    Plantilla ||--o{ Obrero : ""
 
 ```
 
