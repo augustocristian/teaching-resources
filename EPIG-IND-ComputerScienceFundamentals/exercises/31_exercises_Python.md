@@ -9,7 +9,7 @@
 
 ## Ejercicios de variables
 
-1. Dadas las variables a= 3 b = “pepe” c=1 d= 2 para cada expresión de la tabla siguiente, indicar si la expresión es
+1. Dadas las variables a= 3 b = "pepe” c=1 d= 2 para cada expresión de la tabla siguiente, indicar si la expresión es
    correcta o no. Si lo fuera, indicar el resultado y su tipo. Si es incorrecta indicar brevemente por qué
 
    | Expresión  | ¿Es correcta? | Tipo y resultado | 
@@ -35,13 +35,13 @@
 2. ¿Qué saldrá por pantalla al ejecutar el siguiente código?
 
    ```python 
-   j = 0
-   h = 5
-   resultado = h**j
+   j : int = 0
+   h : int = 5
+   resultado : int = h ** j
    j = j + 1
-   resultado = resultado + h**j
+   resultado = resultado + h ** j
    j = j + 1
-   resultado = resultado + h**j
+   resultado = resultado + h ** j
    print(resultado)
     ```
    Salida: `El resultado es : _ _`
@@ -53,10 +53,10 @@
 
 3.  Dado el siguiente código:
     ```python 
-      lista = [3, 7, 8, 12,8]
-      i = 0
-      a = 0
-      b = 10
+      lista : list = [3, 7, 8, 12,8]
+      i : int = 0
+      a : int = 0
+      b : int = 10
       while len(lista) != 0:
         i += 1
         if i % 2 == 0:
@@ -119,7 +119,7 @@
 
    ```python 
     # WHILE SOLUTION
-    iter: int = 0
+    iter : int = 0
     while (iter <= 4):
         print("***********")
     iter = iter + 1
@@ -142,7 +142,7 @@
 
    ```python
    # WHILE SOLUTION 
-    iter: int = 0
+    iter : int = 0
     while (iter <= 4):
         if (iter == 0) | (iter == 4):
             print("***********")
@@ -197,7 +197,7 @@
 
    ```python 
     sumatorio: int = 0
-    num: int = int(input("Dame un número"))
+    num : int = int(input("Dame un número"))
     # WHILE SOLUTION
     iter = 0
     while (iter < num):
@@ -219,15 +219,15 @@
 
    ```python
     # WHILE SOLUTION 
-    num : int = int(input("dame un número"))
+    num : int = int (input("dame un número"))
     iter : int = 0
     while (iter < num):
-        if (iter % 2 != 0):
+        if iter % 2 != 0:
             print(iter)
         iter = iter + 1
     # FOR SOLUTION
     for iter in range(0, num + 1, 1):
-        if (iter % 2 != 0):
+        if iter % 2 != 0:
             print(iter)
     ```
 
@@ -241,7 +241,7 @@
    ```python
     word = input("Dame una palabra")
     # WHILE SOLUTION
-    iter = 0
+    iter : int = 0
     while (iter < len(word)):
         print(word[iter])
         iter = iter + 1
@@ -260,9 +260,10 @@
 
    ```python
     word : str = input("dame una palabra")
-    # WHILE
-    iter = 0
     nvocales: int = 0
+   
+    # WHILE
+    iter : int = 0
     while iter < len(word):
     if (word[iter] == "a") | (word[iter] == "e") | (word[iter] == "i") | (word[iter] == "o") | (word[iter] == "u"):
         nvocales = nvocales + 1
@@ -270,7 +271,7 @@
     print("La cantidad de vocales es ", nvocales)
     
     # FOR
-    nvocales : int = 0
+    nvocales = 0 # Inicializamos nvocales a 0, si no devolvería 2xnºvocales (bucle anterior)
     for iter in range(0, len(word), 1):
         if ((word[iter] == "a") | (word[iter] == "e") | (word[iter] == "i") | (word[iter] == "o") | (word[iter] == "u")):
             nvocales = nvocales + 1
@@ -286,14 +287,14 @@
       <summary>SEE SOLUTION</summary>
 
    ```python
-    wordmayus = ""
-    iter = 0
+    wordmayus : str = ""
+    iter : int = 0
     while (iter < len(word)):
         wordmayus = wordmayus + chr(ord(word[iter]) - 32)
         iter = iter + 1
     print(wordmayus)
     
-    wordmayus = ""
+    wordmayus = "" # Reinicialización de la variable
     for iter in range(0, len(word), 1):
         wordmayus = wordmayus + chr(ord(word[iter]) - 32)
     print(wordmayus)
@@ -311,17 +312,18 @@
     cantidad : int = int(input("¿Cuantos vas a introducir?"))
     anterior : int = 0
     iter : int = 0
-    # Con while
+    # WHILE SOLUTION
     while (iter < cantidad):
         num : int = int(input("Dame Nº"))
-        if (num < anterior):
+        if num < anterior:
             print("Es menor!")
         anterior = num
         iter = iter + 1
-    # Con For
+    # FOR SOLUTION 
+    anterior = 0
     for iter in range(0, cantidad, 1):
         num : int = int(input("Dame Nº"))
-        if (num < anterior):
+        if num < anterior:
             print("Es menor!")
         anterior = num
     ```
@@ -336,7 +338,7 @@
             esmultiplo : bool = False
             while (esmultiplo == False):
                 num = int(input("Dame un número"))
-                if (num % 7 == 0):
+                if num % 7 == 0:
                     esmultiplo = True
        ```
 
@@ -348,12 +350,12 @@
       <summary>SEE SOLUTION</summary>
 
        ```python
-        pares = "Los pares son : \n "
-        impares = "Los impares son : \n "
-        num = 1
+        pares : str = "Los pares son : \n "
+        impares : str = "Los impares son : \n "
+        num : int = 1
         while (num != 0):
             num = int(input("Dame un número"))
-            if (num % 2 == 0):
+            if num % 2 == 0:
                 pares = pares + " " + str(num)
             else:
                 impares = impares + " " + str(num)
@@ -372,14 +374,17 @@
       <summary>SEE SOLUTION</summary>
 
        ```python
+        
         n : int = int(input("Dame la N"))
         m : int = int(input("Dame la M"))
         matriz : str = ""
+        # SOLUCION CON FOR
         for i in range(1, n + 1, 1):
             for j in range(1, m + 1, 1):
                 matriz = matriz + str(i) + str(j) + " "
             matriz += "\n"
         print(matriz)
+        # SOLUCION CON WHILE
         matriz : str = ""
         i : int = 1
         j : int = 1
@@ -403,9 +408,9 @@
       <summary>SEE SOLUTION</summary>
 
    ```python
-   def paresintervalo(n,m):
-      for i in range (n,m,1)
-         if(i%2==0):
+   def paresintervalo (n : int, m : int):
+      for i in range (n, m, 1)
+         if i%2==0:
             print (i)
    ```
 
@@ -418,33 +423,34 @@
       <summary>SEE SOLUTION</summary>
 
    ```python
-   def imparesintervalo(n,m):
-      salida=“”
-      for i in range (n,m,1)
-         if(i%2!=0):
-      return salida
+   def imparesintervalo (n : int, m : int):
+    salida: str = ""
+    for i in range(n, m, 1):
+        if i % 2 != 0:
+            salida += str(i)
+    return salida
    ```
 
 </details>
 
-3. Definir una función que dada una nota (numérica) devuelva si es un “SUSPENSO”, “APROBADO”, “NOTABLE” o
-   “SOBRESALIENTE””
+3. Definir una función que dada una nota (numérica) devuelva si es un "SUSPENSO”, "APROBADO”, "NOTABLE” o
+   "SOBRESALIENTE””
 
     <details>
       <summary>SEE SOLUTION</summary>
 
    ```python
-   def notastring(nota):
-      salida=“”
-      If (nota<5):
-         salida=“SUSPENSO”
-      elif (nota>=5)&(nota<7):
-         salida =“APROBADO”
-      elif (nota>=7)&(nota<9):
-         salida =“NOTABLE”
-      else:
-         salida= “SOBRESALIENTE”
-   return salida
+    def notastring (nota : float):
+        salida : str  =""
+        if nota < 5:
+            salida ="SUSPENSO"
+        elif (nota >= 5) & (nota < 7):
+            salida ="APROBADO"
+        elif (nota >= 7) & (nota < 9):
+            salida ="NOTABLE"
+        else:
+            salida = "SOBRESALIENTE"
+    return salida
    ```
 
 </details>
@@ -455,21 +461,22 @@
     <details>
       <summary>SEE SOLUTION</summary>
 
-       ```python
-        def validardni(dni):
+   ```python
+    def validardni (dni : str) -> bool:
         if len(dni) == 9:
             for i in range(0, len(dni)):
-                letter : str = dni[i]
-                is_number : bool = not (letter in '1234567890') & i < 8
-                last_is_letter : bool = (ord('A') <= ord(letter) <= ord('Z')) & (i == 8)
+                letter: str = dni[i]
+                is_number: bool = not (letter in '1234567890') & i < 8
+                last_is_letter: bool = (ord('A') <= ord(letter) <= ord('Z')) & (i == 8)
                 if is_number:
                     return False
                 else:
                     if last_is_letter:
                         return True
-        
+
         return False
-       ```
+
+   ```
 
 </details>
 
@@ -480,11 +487,11 @@
       <summary>SEE SOLUTION</summary>
 
    ```python
-   def dameGrados(centigrados):
-      gradosKelvin=centigrados+273
-      gradosFarenheit=centigrados* 1.8000+ 32.00
-      return gradosKelvin,gradosFarenheit
-   kelvin,farenheit = dameGrados(30)
+    def dameGrados (centigrados : float) -> tuple[float,float]:
+        gradosKelvin = centigrados + 273
+        gradosFarenheit = centigrados * 1.8000 + 32.00
+        return gradosKelvin, gradosFarenheit
+
    ```
    </details>
 
@@ -497,13 +504,13 @@
       <summary>SEE SOLUTION</summary>
 
    ```python
-   def dameimc(peso, altura):
+   def dameimc (peso : float, altura : float):
      imc = peso / (altura ** 2)
-     if (imc < 18.5):
+     if imc < 18.5:
        print("El IMC es de", imc, "tienes un peso bajo")
-     elif ((imc >= 18.5) & (imc <= 24.9)):
+     elif (imc >= 18.5) & (imc <= 24.9):
        print("El IMC es de", imc, "tienes un peso Normal")
-     elif ((imc >= 25) & (imc <= 29.9)):
+     elif (imc >= 25) & (imc <= 29.9):
        print("El IMC es de", imc, "tienes Sobrepeso")
      else:
        print("El IMC es de", imc, "tienes Obesidad"
@@ -526,9 +533,9 @@
       <summary>SEE SOLUTION</summary>
 
    ```python
-   def estriangulovalido(h, cuno, cdos):
-      if (h <= (cuno + cdos)):
-         area = (((h + cuno + cdos) / 2) * (((h + cuno + cdos) / 2) - h) * (((h + cuno + cdos) / 2) - cuno) * (((h + cuno + cdos) / 2) - cdos)) ** (1 / 2)
+   def estriangulovalido (h : float , cuno : float, cdos : float) -> bool:
+      if h <= (cuno + cdos):
+         area : float = (((h + cuno + cdos) / 2) * (((h + cuno + cdos) / 2) - h) * (((h + cuno + cdos) / 2) - cuno) * (((h + cuno + cdos) / 2) - cdos)) ** (1 / 2)
          print("El área es ", area)
          return True
       else:
@@ -542,7 +549,7 @@
       <summary>SEE SOLUTION</summary>
 
    ```python
-   def esprimo(n):
+   def esprimo (n : int) -> bool:
       if n <= 1:
          return False
       for i in range(2, int(n**0.5) + 1):
@@ -559,9 +566,9 @@
       <summary>SEE SOLUTION</summary>
 
    ```python
-   def dameprimosintervalo(a, b):
+   def dameprimosintervalo (a : int, b : int):
       for i in range(a, b + 1, 1):
-         if (esprimo(i)):
+         if esprimo(i):
             print(i)
    ```
 
@@ -573,14 +580,14 @@
       <summary>SEE SOLUTION</summary>
 
       ```python
-      def espalindromo(palabra):
-         palabradelreves="“
-         for i in range (len(palabra)-1,-1,-1):
-            palabradelreves+=palabra[i];
+      def espalindromo (palabra : str) -> bool:
+         palabradelreves : str = ""
+         for i in range ( len(palabra) - 1, -1, -1):
+            palabradelreves += palabra [i] ;
          return palabra==palabradelreves
          
-      def espalindromoslicing(palabra):
-         return palabra==palabra[::-1]
+      def espalindromoslicing (palabra : str) -> bool:
+         return palabra == palabra[::-1]
       ```
 
 </details>
@@ -593,8 +600,8 @@
 
       ```python
       def piedra_papel_tijera():
-         player_a = 0
-         player_b = 0
+         player_a : int = 0
+         player_b :int = 0
          while player_a == player_b:
             player_a = int(input("Dime que opción quiere jugador A:\n1)Piedra\n2)Papel\n3)Tijera "))
             player_b = int(input("Dime que opción quiere jugador B:\n1)Piedra\n2)Papel\n3)Tijera "))
@@ -612,9 +619,9 @@
       <summary>SEE SOLUTION</summary>
 
    ```python
-   def leelineaspares(ruta:str):
-       f = open(ruta, ’r’)
-       lista = f.readlines()
+   def leelineaspares(ruta : str):
+       f = open(ruta, 'r')
+       lista : list = f.readlines()
        for  línea in lista:
            print (línea.strip())
        f.close()
@@ -627,12 +634,12 @@
       <summary>SEE SOLUTION</summary>
 
    ```python
-   def leelineaspares(ruta):
-       f = open(ruta, ’r’)
-       lista = f.readlines()
-       nlinea = 1
+   def leelineaspares(ruta : str):
+       f = open(ruta, 'r')
+       lista : list = f.readlines()
+       nlinea : int = 1
        for  línea in lista:
-           if(nlinea%2==0):
+           if nlinea % 2 == 0 :
                print (línea.strip())
            nlinea+=1	
        f.close()
@@ -646,12 +653,12 @@
       <summary>SEE SOLUTION</summary>
 
    ```python
-   def escribeentrada(ruta):
-       f = open(ruta, ’a’)
-       linea= input(“Dame la siguiente línea \n”)
-       while (linea!=“END”	):
+   def escribeentrada(ruta : str):
+       f = open(ruta, 'a')
+       linea : str = input("Dame la siguiente línea \n”)
+       while linea!="END":
            f.write(linea)
-           linea=input (“Dame la siguiente línea \n”) 	f.close()
+           linea = input ("Dame la siguiente línea \n”) 	f.close()
 
    ```
 
@@ -662,14 +669,14 @@
       <summary>SEE SOLUTION</summary>
 
    ```python
-   def escribelineaspareseimpares(rutaentrada,rutapares,rutaimpares):
+   def escribelineaspareseimpares(rutaentrada : str,rutapares : str,rutaimpares : str):
        finput = open(rutaentrada, 'r')
        foutputpares=open(rutapares, 'a')
        foutputimpares = open(rutaimpares, 'a')
-       lista = finput.readlines()
-       nlinea = 1
+       lista : list = finput.readlines()
+       nlinea : int = 1
        for  linea in lista:
-           if(nlinea%2==0):
+           if(nlinea%2 == 0):
                foutputpares.write(linea)
            else:
                foutputimpares.write(linea)
@@ -677,8 +684,7 @@
        finput.close()
        foutputpares.close()
        foutputimpares.close()
-   
-    escribelineaspareseimpares(ficheroentrada)
+
    ```
 
 </details>
@@ -689,9 +695,9 @@
       <summary>SEE SOLUTION</summary>
 
    ```python
-   def leelista():
-       lista=[]
-       item= float(input("Dame el elemento que quieres introducir \n"))
+   def leelista() -> list:
+       lista : list = []
+       item : float = float(input("Dame el elemento que quieres introducir \n"))
        while (item!=0):
            lista.append(item)
            item= float(input("Dame el  siguiente elemento \n"))
@@ -706,19 +712,17 @@
       <summary>SEE SOLUTION</summary>
 
    ```python
-   def clasificaparimpar(lista):
-       listapares=[]
-       listaimpares= []
+   def clasificaparimpar(lista : list)  -> Tuple[list, list]:
+       listapares : list = []
+       listaimpares : list = []
        for i in lista:
-           if (i%2==0):
+           if i%2 == 0:
                listapares.append(i)
            else:
                listaimpares.append(i)
    
        return listapares,listaimpares
-   pares,impares=clasificaparimpar([1,2,3,4,5,6,7,8,9])
-   print(pares)
-   print(impares) 
+
    ```
 
 </details>
@@ -729,11 +733,12 @@
       <summary>SEE SOLUTION</summary>
 
    ```python
-   def clasificalistas(lista):
-       listastrings=[]
-       listaenteros=[]
-       listaflotantes=[]
-       listabooleanos=[]
+
+   def clasificalistas(lista : list) -> Tuple[list,list,list,list]::
+       listastrings : list = []
+       listaenteros : list = []
+       listaflotantes : list = []
+       listabooleanos : list = []
        for i in lista:
            if type(i)==type("String"):
                listastrings.append(i)
@@ -756,11 +761,11 @@
       <summary>SEE SOLUTION</summary>
 
    ```python
-   def eliminamultiplosdos(lista):
-       copialista=[]
+   def eliminamultiplosdos(lista : list) -> list:
+       copialista : list = []
        copialista.extend(lista)
        for i in copialista:
-           if(i%2==0):
+           if i%2 == 0:
                lista.remove(i)
        return lista
    
@@ -776,13 +781,14 @@
       <summary>SEE SOLUTION</summary>
 
    ```python
-   def incrementaporcentaje(lista,porcentaje):
+   def incrementaporcentaje(lista : list ,porcentaje : float) -> list:
        for i in range(0,len(lista)):
-           lista[i]=lista[i]*(1+(porcentaje/100))
+           lista [i] = lista[i] * (1 + (porcentaje/100))
        return  lista
    
-   lis= [1.3,5.5,1.7,1.9,7]
-   lis=incrementaporcentaje(lis,20)
+   lis : list = [1.3,5.5,1.7,1.9,7]
+   print(lis)
+   lis = incrementaporcentaje(lis,20)
    print(lis)
    ```
 
@@ -794,14 +800,14 @@
       <summary>SEE SOLUTION</summary>
 
       ```python
-      def eliminaduplicados(lista):
-          listasinduplicados=[]
+      def eliminaduplicados(lista : list) -> list :
+          listasinduplicados : list = []
           for i in lista:
-              if ((i in listasinduplicados)==False):
+              if (i in listasinduplicados) == False:
                   listasinduplicados.append(i)
           return listasinduplicados
-      listaduplicados= [2,2,2,4,5,5,5,6,7,7,8,8,8,8]
-      listasinduplicados=eliminaduplicados(listaduplicados)
+      listaduplicados : list = [2,2,2,4,5,5,5,6,7,7,8,8,8,8]
+      listasinduplicados : list = eliminaduplicados(listaduplicados)
       print(listasinduplicados) )
       ```
 
@@ -833,25 +839,25 @@
       <summary>SEE SOLUTION</summary>
 
    ```python
-     def getlistmaxtemperatures(filepath):
+     def getlistmaxtemperatures(filepath : str):
          f = open(filepath, 'r')
-         content = f.readlines()
-         output = []
+         content : list = f.readlines()
+         output : list = []
          for line in content:
              split_line = line.split(",")
              output.append([split_line[0], max(split_line[1:])])
          f.close()
          return output
-     # Other solution
-     def getlistmaxtemperatures_loop(filepath):
+     # Alternative solution
+     def getlistmaxtemperatures_loop(filepath : str) -> list:
          f = open(filepath, 'r')
-         content = f.readlines()
+         content : list = f.readlines()
          output = []
          for line in content:
-             split_line = line.split(",")
-             max_temp = -100.0
+             split_line : list = line.split(",")
+             max_temp : int = -100.0
              for temp in split_line[1:]:
-                 tempmonth = float(temp)
+                 tempmonth : float= float(temp)
                  if max_temp < tempmonth:
                      max_temp = tempmonth
              output.append([split_line[0], max_temp])
@@ -881,14 +887,14 @@ Extracto del fichero:
          <summary>SEE SOLUTION</summary>
 
    ```python
-    def devuelvebalance_gastos(rutafichero):
+    def devuelvebalance_gastos(rutafichero : str) -> Tuple(float,list) :
       f = open(rutafichero, 'r')
-      lineas = f.readlines()
-      lista_movimientos = []
-      balance = 0
+      lineas : list = f.readlines()
+      lista_movimientos : list = []
+      balance : float = 0.0
       for i in range(1, len(lineas)):
-         split_line = lineas[i].strip().split(";")
-         importe = float(split_line[len(split_line) - 1])
+         split_line : list = lineas[i].strip().split(";")
+         importe : float = float(split_line[len(split_line) - 1])
          balance += importe
          lista_movimientos.append(importe)
       lista_movimientos.sort()
