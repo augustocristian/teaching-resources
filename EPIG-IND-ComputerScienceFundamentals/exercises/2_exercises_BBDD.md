@@ -445,8 +445,9 @@ animales.
 
 Un animal puede tener varias vacunas, a su vez varios animales pueden estar vacunados con la misma vacuna.
 
-Los voluntarios pueden realizar colaboraciones, estás consisten en llevar a uno o varios animales a su casa durante un
-fin de semana.
+Los voluntarios pueden realizar una o varias colaboraciones, una colaboración es realizada exclusivamente por un voluntario.
+
+Las colaboraciones consisten en llevar a uno o varios animales a su casa durante un fin de semana, un animal puede participar en varias colaboraciones. 
 
 Los adoptantes realizan adopciones de un animal, un adoptante puede realizar varias adopciones.
 
