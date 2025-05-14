@@ -53,7 +53,7 @@
    modificación de la lista o en caso de error la causa de este:
 
    | Expresión          | ¿Correcta? | Tipo y resultado / Modificación / Causa del error |
-                               |--------------------|------------|---------------------------------------------------|
+   |--------------------|------------|---------------------------------------------------|
    | `a[::-1]`          |            |                                                   |
    | `a.append(str(b))` |            |                                                   |
    | `a * b[2]`         |            |                                                   |
